@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import Landing from './Pages/Landing/Landing';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      This is an application.
-    </div>
+    <Suspense fallback={<p>Loading Placeholder</p>}>
+      <Routes>
+        <Route
+         path="/"
+         element={<Landing />}
+        />
+        <Route
+         path="/test"
+         element={<p>Test page</p>}
+        />
+        <Route 
+         path="*"
+         element={<Navigate to="/" replace/>}
+        />
+      </Routes>
+    </Suspense> 
   );
 }
 
