@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import Landing from './Pages/Landing/Landing';
+import Landing from './Pages/Landing/Landing'; //! Switch to lazy loading once dynamic imports are added
 import './App.css';
 
 function App() {

@@ -1,0 +1,44 @@
+.pageContainer {
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 128, 0, 0.522);
+}
+
+.welcomeTextContainer {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    margin-top: 5%;
+
+    background-color: aliceblue;
+}
+
+.contentAlignmentContainer {
+    width: 70%;
+    height: 0;
+
+    margin: 0 auto;
+
+    background-color: bisque;
+}
+
+.tagLineTextContainer {
+    height: fit-content;
+    width: fit-content;
+
+    margin-top: 15%;
+    float: left;
+
+    background-color: aquamarine;
+}
+
+.optionsTreeContainer {
+    height: fit-content;
+    width: fit-content;
+
+    margin-top: 15%;
+    float: right;
+
+    background-color: rgba(53, 53, 149, 0.683);
+}
