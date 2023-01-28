@@ -1,0 +1,11 @@
+.pivot{
+	color: aqua;
+}
+
+.selected{
+	color: green;
+}
+
+.pivot .selected{
+	color:aquamarine;
+}
