@@ -21,3 +21,11 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.vs/Algorithms-Explained/FileContentIndex/5920e4aa-6622-490f-9066-addb7594d04f.vsidx
+/.vs/Algorithms-Explained/FileContentIndex/99e15697-8c20-4f17-bdba-77aa413f5c86.vsidx
+/.vs/Algorithms-Explained/FileContentIndex/read.lock
+/.vs/Algorithms-Explained/v17/.wsuo
+/.vs/slnx.sqlite
+/.vs/Algorithms-Explained/FileContentIndex/0c6b6db9-eb8d-4b62-91a5-d75a4949ce8b.vsidx
+/.vs/Algorithms-Explained/FileContentIndex/664e0c06-7f62-4d2a-ab57-e707811eac65.vsidx
+*.vsidx
