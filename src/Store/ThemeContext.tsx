@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { IPalette } from './ThemeData/ThemeInterface';
 import { LightPalette } from './ThemeData/LightPalette';
@@ -26,8 +26,20 @@ interface ITheme {
 export const StyleProvider = ({children}:IProviderProps) => {
     const [isDark, setIsDark] = useState(false);
 
+    //if local storage has key "ISDARK" set to "true" => isDark is set to true
+    useEffect(() => {
+        const storageDark = localStorage.getItem("ISDARK");
+        if (storageDark === "true"){
+            setIsDark(true);
+        }
+    }, []);
+
     const toggleDark = () => {
-        setIsDark(prevDarkState => !prevDarkState);
+        setIsDark(prevDarkState => {
+            const newDarkState = !prevDarkState;
+            localStorage.setItem("ISDARK", newDarkState + "");
+            return newDarkState
+        });
     };
 
 

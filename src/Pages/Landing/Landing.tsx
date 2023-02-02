@@ -12,7 +12,7 @@ function Landing() {
             </div>
             <div className={styles.contentAlignmentContainer}>
                 <div className={styles.tagLineTextContainer} style={styleCTX.theme.background1}>
-                    <h2>Select an algorithm to explore,</h2>
+                    <h2 style={styleCTX.theme.text1}>Select an algorithm to explore,</h2>
                     <h2>interact, and learn</h2>
                 </div>
                 <div className={styles.optionsTreeContainer}>
