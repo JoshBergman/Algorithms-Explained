@@ -1,44 +1,44 @@
 .pageContainer {
     width: 100%;
-    height: 100%;
-
-    background-color: rgba(0, 128, 0, 0.522);
-}
-
-.welcomeTextContainer {
-    width: fit-content;
     height: fit-content;
-    margin: 0 auto;
-    margin-top: 5%;
 
-    background-color: aliceblue;
+    background-color: rgba(0, 128, 0, 0);
 }
 
 .contentAlignmentContainer {
-    width: 70%;
-    height: 0;
-
+    width: 50%;
+    height: fit-content;
     margin: 0 auto;
+    margin-top: 10%;
 
-    background-color: bisque;
+    background-color: rgba(233, 197, 153, 0);
 }
 
 .tagLineTextContainer {
-    height: fit-content;
-    width: fit-content;
+    width: 80%;
+    
+    background-color: rgba(127, 255, 212, 0);
+}
 
-    margin-top: 15%;
-    float: left;
-
-    background-color: aquamarine;
+.tagLineText {
+    font-size: 50px;
+    margin: 10px;
+    margin-left: 0;
+    
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
 }
 
 .optionsTreeContainer {
-    height: fit-content;
-    width: fit-content;
+    width: 90%;
+    margin-left: auto;
+    
+    background-color: rgba(53, 53, 149, 0);
+}
 
-    margin-top: 15%;
-    float: right;
-
-    background-color: rgba(53, 53, 149, 0.683);
+.algoTextHeader {
+    text-align: right;
+    margin-top: 80px;
+    font-size: 35px;
+    text-decoration: underline;
 }

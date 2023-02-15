@@ -4,6 +4,9 @@ interface IStyleObj {
 }
 
 export interface IPalette {
+    pageColor: IStyleObj;
+    logoText1: IStyleObj;
+    logoBackground1: IStyleObj;
     background1: IStyleObj;
     text1: IStyleObj;
 }

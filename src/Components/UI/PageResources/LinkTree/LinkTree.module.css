@@ -1,0 +1,52 @@
+.linksContainer {
+    margin-left: auto;
+    margin-right: 40px;
+
+    border-right: 3px solid;
+
+    width: 40%;
+}
+
+.singleLinkContainer {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.connectingLine {
+    width: 100%;
+    height: 3px;
+    margin-top: 15px;
+}
+
+.textContainer {
+    display: inline-block;
+    width: fit-content;
+    
+}
+
+.linkText {
+    font-size: 140%;
+    font-weight: bold;
+    text-decoration: none;
+
+    height: 30px;
+    width: 100%;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin: 0;
+    margin-right: 20px;
+}
+
+.linkText:hover {
+    text-decoration: underline;
+}

@@ -38,7 +38,7 @@ export const StyleProvider = ({children}:IProviderProps) => {
         setIsDark(prevDarkState => {
             const newDarkState = !prevDarkState;
             localStorage.setItem("ISDARK", newDarkState + "");
-            return newDarkState
+            return newDarkState;
         });
     };
 
