@@ -1,8 +1,6 @@
 .pageContainer {
     width: 100%;
     height: fit-content;
-
-    background-color: rgba(0, 128, 0, 0);
 }
 
 .contentAlignmentContainer {
@@ -10,14 +8,12 @@
     height: fit-content;
     margin: 0 auto;
     margin-top: 10%;
-
-    background-color: rgba(233, 197, 153, 0);
 }
 
 .tagLineTextContainer {
     width: 80%;
     
-    background-color: rgba(127, 255, 212, 0);
+    transition: all 0.8s ease-in-out;
 }
 
 .tagLineText {
@@ -32,8 +28,8 @@
 .optionsTreeContainer {
     width: 90%;
     margin-left: auto;
-    
-    background-color: rgba(53, 53, 149, 0);
+
+    transition: all 0.8s ease-in-out;
 }
 
 .algoTextHeader {

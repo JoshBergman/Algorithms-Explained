@@ -1,0 +1,37 @@
+.title {
+    font-size: xx-large;
+    text-align: center;
+    text-decoration: underline;
+
+    margin-top: 100px;
+}
+
+.linksContainer {
+    height: fit-content;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.singleLinkContainer {
+    height: fit-content;
+    width: 100%;
+
+    border-bottom: 2px solid;
+    padding: 8px;
+    font-size: 24px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.linkTitle {
+    float: left;
+    text-decoration: none;
+}
+
+.linkTitle:hover {
+    text-decoration: underline;
+}
+
+.linkDesc {
+    float: right;
+}

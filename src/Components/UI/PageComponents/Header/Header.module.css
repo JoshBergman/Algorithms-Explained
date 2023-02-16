@@ -1,0 +1,39 @@
+.mainContainer {
+    position: absolute;
+    width: 100%;
+    top: 10px;
+    left: 0;
+
+    transition: all 1s ease-in-out;
+}
+
+.alignmentContainer {
+    height: fit-content;
+    width: 40%;
+
+    margin: 0 auto;
+}
+
+.leftContainer {
+    width: fit-content;
+    display: inline-block;
+}
+
+.rightContainer {
+    width: fit-content;
+    float: right;
+}
+
+.logo,
+.link {
+    font-size: x-large;
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: all 0.2 ease-in-out;
+}
+
+.logo:hover,
+.link:hover {
+    text-decoration: underline;
+}

@@ -1,7 +1,12 @@
 import React from 'react';
 
 export const LinksContext = React.createContext({
-    links: [["LinkTitle", "Endpoint"]]
+    allLinks: {
+        links: [["Title", "Endpoint", "Desc"]]
+    },
+    featuredLinks: {
+        links: [["Title", "Endpoint", "Desc"]]
+    }
 });
 
 
@@ -11,18 +16,28 @@ interface IProviderProps {
 }
 
 interface Links {
-    links: [string, string][];
+    links: [string, string, string][];
+    // [name, link, desc]
 }
 
 export const LinksProvider = ({children}:IProviderProps) => {
 
     //if the quantity of links becomes more than we want on landing page make another list of 'featured links' for use on landing page
     const currLinks: Links = {
-        links: [["Test", "/test"], ["Name 2", "/test"], ["Third s s s s s ", "/test"], ["Another Link", "/test"], ["Sml Lnk", "/test"]]
+        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Third s s s s s ", "/test", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["Go Home", "/", "Return Link"]]
+    };
+
+    const featuredLinks: Links = {
+        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Third s s s s s ", "/test", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["See More...", "/algorithms", ""]]
+    }
+
+    const links = {
+        allLinks: currLinks,
+        featuredLinks: featuredLinks
     };
 
     return (
-        <LinksContext.Provider value={currLinks}>
+        <LinksContext.Provider value={links}>
             {children}
         </LinksContext.Provider>
     );

@@ -5,6 +5,8 @@ import './App.css';
 import { StyleContext } from './Store/ThemeContext';
 
 import Landing from './Pages/Landing/Landing'; //TODO Switch to lazy loading once dynamic imports are added
+import Algorithms from './Pages/Landing/Algorithms';
+import Header from './Components/UI/PageComponents/Header/Header';
 
 // TODO Replace loading placeholder with actual loading spinner
 
@@ -12,11 +14,16 @@ function App() {
   const styleCTX = useContext(StyleContext);
   return (
     <div style={styleCTX.theme.pageColor} className="page" >
+    <Header />
     <Suspense fallback={<p>Loading Placeholder</p>}>
       <Routes>
         <Route
          path="/"
          element={<Landing />}
+        />
+        <Route
+         path="/algorithms"
+         element={<Algorithms />}
         />
         <Route
          path="/test"
