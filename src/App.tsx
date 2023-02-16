@@ -8,6 +8,8 @@ import Landing from './Pages/Landing/Landing'; //TODO Switch to lazy loading onc
 import Algorithms from './Pages/Landing/Algorithms';
 import Header from './Components/UI/PageComponents/Header/Header';
 
+import Array from './Pages/Algorithms/Data-Structures/Array';
+
 // TODO Replace loading placeholder with actual loading spinner
 
 function App() {
@@ -26,8 +28,8 @@ function App() {
          element={<Algorithms />}
         />
         <Route
-         path="/test"
-         element={<p>Test page</p>}
+         path="/array"
+         element={<Array />}
         />
         <Route 
          path="*"

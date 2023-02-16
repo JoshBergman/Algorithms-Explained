@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
+import { BsFillMoonFill } from 'react-icons/bs';
 import { FaLightbulb } from 'react-icons/fa';
 
 import styles from './DarkModeButton.module.css';
@@ -21,14 +21,14 @@ export default function DarkModeButton() {
     };
 
     const animateChange = (newState: boolean) => {
-      setCurrTransform(360);
+      setCurrTransform(180);
       
       setTimeout(() => {
         setIsLight(newState);
         setTimeout(() => {
           setCurrTransform(0);
-        }, 30)
-      }, 380);
+        }, 15)
+      }, 190);
     };
 
     const animationStyle = {

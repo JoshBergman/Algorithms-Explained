@@ -24,11 +24,11 @@ export const LinksProvider = ({children}:IProviderProps) => {
 
     //if the quantity of links becomes more than we want on landing page make another list of 'featured links' for use on landing page
     const currLinks: Links = {
-        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Third s s s s s ", "/test", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["Go Home", "/", "Return Link"]]
+        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Array", "/array", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["Go Home", "/", "Return Link"]]
     };
 
     const featuredLinks: Links = {
-        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Third s s s s s ", "/test", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["See More...", "/algorithms", ""]]
+        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Array", "/array", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["See More...", "/algorithms", ""]]
     }
 
     const links = {
