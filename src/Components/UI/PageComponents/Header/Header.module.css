@@ -24,6 +24,15 @@
     float: right;
 }
 
+.linksContainer {
+    height: fit-content;
+    width: 150%;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
 .logo,
 .link {
     font-size: x-large;

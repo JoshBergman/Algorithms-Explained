@@ -1,0 +1,15 @@
+.button {
+    width: fit-content;
+    height: fit-content;
+
+    margin-top: 6px;
+    background-color: transparent;
+    border: 0 solid transparent;
+}
+
+.sun,
+.moon {
+    font-size: large;
+
+    transition: all 0.4s ease-in-out;
+}
