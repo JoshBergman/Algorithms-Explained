@@ -1,0 +1,37 @@
+.snippetContainer {
+    background-color: rgb(17, 16, 21);
+
+    padding:6px;
+    box-shadow: 0 0 10px rgb(81, 140, 110);
+    border-radius: 5px;
+}
+
+.snippetLine, .invis {
+    margin: 5px 15px;
+    font-family: monospace;
+    font-size: large;
+    color: rgb(220, 221, 235);
+}
+
+.invis {
+    color: transparent;
+}
+
+.pseudoBtn {
+    background-color: rgb(205, 70, 70);
+    height: 10px;
+    width: 10px;
+
+    border-radius: 100%;
+
+    margin: 4px;
+    display: inline-block;
+}
+
+.pseudoBtn:nth-child(2) {
+    background-color: rgb(216, 177, 70);
+}
+
+.pseudoBtn:nth-child(3) {
+    background-color: rgb(36, 175, 36);
+}

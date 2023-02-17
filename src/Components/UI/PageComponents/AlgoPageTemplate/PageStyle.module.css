@@ -1,0 +1,18 @@
+.p {
+    text-align: left;
+    font-size: 18px;
+    
+    margin: 4px 0 80px 0;
+    font-weight: 400;
+}
+
+.h, .hc {
+    text-align: left;
+    font-size: 20px;
+
+    margin: 40px 0 10px 0;
+}
+
+.hc {
+    text-align: center;
+}

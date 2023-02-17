@@ -11,11 +11,10 @@
 }
 
 .wordsContainer {
-    border: 2px solid;
-
-    width: 100%;
+    width: 80%;
     height: fit-content;
 
+    margin: 0 auto;
     margin-top: 200px;
 }
 

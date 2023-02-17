@@ -20,7 +20,7 @@ export default function AlgoPageTemplate({algo, children, title}: IAlgoProps) {
     <div className={styles.alignmentContainer}>
         <h1 className={styles.title} style={styleCTX.logoText1}>{title}</h1>
         <div className={styles.algoContainer} style={borderColor}>{algo}</div>
-        <div className={styles.wordsContainer} style={borderColor}>{children}</div>
+        <div className={styles.wordsContainer} >{children}</div>
     </div>
   );
 }
