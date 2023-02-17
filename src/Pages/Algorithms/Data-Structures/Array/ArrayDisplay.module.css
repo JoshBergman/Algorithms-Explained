@@ -1,0 +1,12 @@
+.showcaseContainer {
+    height:fit-content;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+.showcase {
+    color: inherit;
+    font-size: xx-large;
+    font-family: monospace;
+    text-align: center;
+}

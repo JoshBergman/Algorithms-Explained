@@ -1,14 +1,14 @@
 import React from 'react';
 import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageTemplate/AlgoPageTemplate';
 
-import ArrayAnimation from './ArrayAnimation';
+import ArrayDisplay from './ArrayDisplay';
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 
 export default function Array() {
   return (
-    <AlgoPageTemplate algo={<ArrayAnimation />} title="Array">
+    <AlgoPageTemplate algo={<ArrayDisplay />} title="Array">
         <H centered={true}>Hello, But Centered</H>
         <P>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -18,10 +18,8 @@ export default function Array() {
         </P>
 
         <CodeSnippet>
-          This is a code snippet!^^^
-          This is Code^
-          This is code line 2^
-          and the final line!
+          Javascript^^
+          const exArray = ["String Value", 912, 0.12312, 112];
         </CodeSnippet>
 
         <H>Hello, But Left Align</H>

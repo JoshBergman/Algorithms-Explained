@@ -11,15 +11,11 @@ interface IAlgoProps {
 
 export default function AlgoPageTemplate({algo, children, title}: IAlgoProps) {
     const styleCTX = useContext(StyleContext).theme;
-
-    const borderColor = {
-        "borderColor" : styleCTX.text1.color
-    };
     
   return (
     <div className={styles.alignmentContainer}>
         <h1 className={styles.title} style={styleCTX.logoText1}>{title}</h1>
-        <div className={styles.algoContainer} style={borderColor}>{algo}</div>
+        <div className={styles.algoContainer} >{algo}</div>
         <div className={styles.wordsContainer} >{children}</div>
     </div>
   );

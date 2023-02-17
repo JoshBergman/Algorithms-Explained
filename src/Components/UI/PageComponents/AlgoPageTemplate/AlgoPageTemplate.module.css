@@ -5,7 +5,6 @@
 }
 
 .algoContainer {
-    border: 2px solid;
     width: 100%;
     height: fit-content;
 }
@@ -15,11 +14,12 @@
     height: fit-content;
 
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .title {
     font-size: xx-large;
     text-align: center;
     margin: 2px;
+    text-decoration: underline;
 }
