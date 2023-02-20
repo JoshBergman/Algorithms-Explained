@@ -16,33 +16,24 @@ interface IProviderProps {
 }
 
 interface Links {
-    links: [string, string, string][];
-    //? [name, link, desc]
+    links: [string, string, string, string][];
+    //? [name, link, desc, relative path]
+    //? relative path is the path after /pages/alorithms | ex: "Data-Structures/Array/Array.tsx"
 }
 
 export const LinksProvider = ({children}:IProviderProps) => {
 
     const currLinks: Links = {
         links: [
-            ["Test", "/test", "Pathfinding"],
-            ["Name 2", "/test", "Sorting"], 
-            ["Array", "/array", "Data Structure"], 
-            ["Another Link", "/test", "Optimization"], 
-            ["Sml Lnk", "/test", "Measuring"], 
-            ["Go Home", "/", "Return Link"],
-            ["Example Page", "/example", "Example"]
+            ["Array", "/array", "Data Structure", "Data-Structures/Array/Array.tsx"], 
+            ["Example Page", "/example", "Example", "Data-Structures/ExamplePage/ExamplePage.tsx"]
     ]
     };
 
     const featuredLinks: Links = {
         links: [
-            currLinks.links[2], //Array (dev)
-            currLinks.links[4], //Test (dev)
-            ["Array", "/array", "Data Structure"], 
-            ["Another Link", "/test", "Optimization"], 
-            ["Sml Lnk", "/test", "Measuring"], 
-            ["See More...", "/algorithms", ""],
-            currLinks.links[6],
+            currLinks.links[1],
+            currLinks.links[0],
         ]
     }
 

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import { StyleContext } from '../../../../Store/ThemeContext';
 import styles from './ArrayDisplay.module.css';
 

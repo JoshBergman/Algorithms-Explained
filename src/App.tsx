@@ -3,18 +3,26 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.css';
 import { StyleContext } from './Store/ThemeContext';
+import { LinksContext } from './Store/LinksContext';
 
-import Landing from './Pages/Landing/Landing'; //TODO Switch to lazy loading once dynamic imports are added
+import Landing from './Pages/Landing/Landing';
 import Algorithms from './Pages/Landing/Algorithms';
 import Header from './Components/UI/PageComponents/Header/Header';
 
-import Array from './Pages/Algorithms/Data-Structures/Array/Array'; //todo automatically import routes as from linkscontext
-import ExamplePage from './Pages/Algorithms/Data-Structures/ExamplePage/ExamplePage';
 
 // TODO Replace loading placeholder with actual loading spinner
 
-function App() {
+function App() {  
   const styleCTX = useContext(StyleContext);
+  const linksCTX = useContext(LinksContext);
+  const allLinks = linksCTX.allLinks.links;
+
+  //generates a lazy-loaded renderable for each stored page in links context | access by using the page title in the elements object ex: elements["title"]
+  const elements: any = {};
+  allLinks.forEach((link) => {
+    elements[link[0]] = React.lazy(() => import('./Pages/Algorithms/' + link[3]));
+  });
+
   return (
     <div style={styleCTX.theme.pageColor} className="page" >
     <Header />
@@ -24,18 +32,23 @@ function App() {
          path="/"
          element={<Landing />}
         />
+        { //Makes a route for each page stored in linksContext
+          allLinks.map((link) => {
+            const thisPath = link[1];
+            const ThisElement: JSX.Element | any = elements[link[0]];
+            return (
+              <Route
+               path={thisPath}
+               element={<ThisElement />}
+               key={link[0]}
+              />
+            );
+          })
+        }
         <Route
          path="/algorithms"
          element={<Algorithms />}
-        />
-        <Route
-         path="/array"
-         element={<Array />}
-        />
-        <Route
-         path="/example"
-         element={<ExamplePage />}
-        />        
+        />     
         <Route 
          path="*"
          element={<Navigate to="/" replace/>}
