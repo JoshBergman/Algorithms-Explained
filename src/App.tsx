@@ -8,7 +8,8 @@ import Landing from './Pages/Landing/Landing'; //TODO Switch to lazy loading onc
 import Algorithms from './Pages/Landing/Algorithms';
 import Header from './Components/UI/PageComponents/Header/Header';
 
-import Array from './Pages/Algorithms/Data-Structures/Array/Array';
+import Array from './Pages/Algorithms/Data-Structures/Array/Array'; //todo automatically import routes as from linkscontext
+import ExamplePage from './Pages/Algorithms/Data-Structures/ExamplePage/ExamplePage';
 
 // TODO Replace loading placeholder with actual loading spinner
 
@@ -31,6 +32,10 @@ function App() {
          path="/array"
          element={<Array />}
         />
+        <Route
+         path="/example"
+         element={<ExamplePage />}
+        />        
         <Route 
          path="*"
          element={<Navigate to="/" replace/>}

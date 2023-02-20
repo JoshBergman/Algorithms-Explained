@@ -17,18 +17,33 @@ interface IProviderProps {
 
 interface Links {
     links: [string, string, string][];
-    // [name, link, desc]
+    //? [name, link, desc]
 }
 
 export const LinksProvider = ({children}:IProviderProps) => {
 
-    //if the quantity of links becomes more than we want on landing page make another list of 'featured links' for use on landing page
     const currLinks: Links = {
-        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Array", "/array", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["Go Home", "/", "Return Link"]]
+        links: [
+            ["Test", "/test", "Pathfinding"],
+            ["Name 2", "/test", "Sorting"], 
+            ["Array", "/array", "Data Structure"], 
+            ["Another Link", "/test", "Optimization"], 
+            ["Sml Lnk", "/test", "Measuring"], 
+            ["Go Home", "/", "Return Link"],
+            ["Example Page", "/example", "Example"]
+    ]
     };
 
     const featuredLinks: Links = {
-        links: [["Test", "/test", "Pathfinding"], ["Name 2", "/test", "Sorting"], ["Array", "/array", "Data Structure"], ["Another Link", "/test", "Optimization"], ["Sml Lnk", "/test", "Measuring"], ["See More...", "/algorithms", ""]]
+        links: [
+            currLinks.links[2], //Array (dev)
+            currLinks.links[4], //Test (dev)
+            ["Array", "/array", "Data Structure"], 
+            ["Another Link", "/test", "Optimization"], 
+            ["Sml Lnk", "/test", "Measuring"], 
+            ["See More...", "/algorithms", ""],
+            currLinks.links[6],
+        ]
     }
 
     const links = {
