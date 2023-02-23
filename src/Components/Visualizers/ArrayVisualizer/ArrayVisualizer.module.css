@@ -10,11 +10,9 @@
 }
 
 .graphBar {
-    background-color: red;
-
     display: inline-block;
     width: 5px;
-    margin: 2px;
+    margin: 0px;
     margin-top: auto;
     padding-bottom: 20px;
 }

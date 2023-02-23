@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StyleContext } from '../../../Store/ThemeContext';
 
 import styles from './ArrayVisualizer.module.css';
 
@@ -7,12 +8,26 @@ interface IArrayVisualizerProps {
 }
 
 export default function ArrayVisualizer({newArray}: IArrayVisualizerProps) {
+  const styleCTX = useContext(StyleContext);
+  const combineStyles = (barValue: number) => {
+    const appliedStyles = {
+      ...styleCTX.theme.mutedLogoBackground1,
+      height: (barValue * 2) + "px",
+    };
+
+    return appliedStyles;
+  };
+
+  const borderColor = {
+    borderColor: styleCTX.theme.text1.color,
+  };
+
   return (
-    <div className={styles.barContainer} >
+    <div className={styles.barContainer} style={borderColor} >
         {
            newArray.map((arrayInt) => {
                 return (
-                <div key={arrayInt + Math.random()} style={{height: arrayInt * 2 + "px"}} className={styles.graphBar} />
+                <div key={arrayInt + Math.random()} style={combineStyles(arrayInt)} className={styles.graphBar} />
 
             );
         })
