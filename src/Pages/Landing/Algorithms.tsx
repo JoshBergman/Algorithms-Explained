@@ -17,12 +17,17 @@ export default function Algorithms() {
     <React.Fragment>
         <h1 className={styles.title} style={styleCTX.theme.logoText1}>All Algorithms</h1>
         <div className={styles.linksContainer}>
-            {linksCTX.allLinks.links.map((link) => {return (
-            <div className={styles.singleLinkContainer} style={borderColor}>
+
+            {linksCTX.allLinks.links.map((link) => {
+                return (
+            <div className={styles.singleLinkContainer} style={borderColor} key={link[0] + 1}>
                 <Link to={link[1]} className={styles.linkTitle} style={styleCTX.theme.text1}>{link[0]}</Link>
                 <label className={styles.linkDesc} style={styleCTX.theme.text1}>{link[2]}</label>
             </div>
-            );})}
+            );
+            })
+            }
+
         </div>
     </React.Fragment>
   )

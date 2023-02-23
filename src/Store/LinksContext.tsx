@@ -26,7 +26,8 @@ export const LinksProvider = ({children}:IProviderProps) => {
     const currLinks: Links = {
         links: [
             ["Array", "/array", "Data Structure", "Data-Structures/Array/Array.tsx"], 
-            ["Example Page", "/example", "Example", "Data-Structures/ExamplePage/ExamplePage.tsx"]
+            ["Example Page", "/example", "Example", "Data-Structures/ExamplePage/ExamplePage.tsx"],
+            ["FakeSort", "/fakesort", "Sorting", "Sorting/FakeSort/FakeSort.tsx"]
     ]
     };
 
@@ -34,6 +35,7 @@ export const LinksProvider = ({children}:IProviderProps) => {
         links: [
             currLinks.links[1],
             currLinks.links[0],
+            currLinks.links[2],
         ]
     }
 
