@@ -28,15 +28,14 @@ export const LinksProvider = ({children}:IProviderProps) => {
             ["Array", "/array", "Data Structure", "Data-Structures/Array/Array.tsx"], 
             ["Example Page", "/example", "Example", "Data-Structures/ExamplePage/ExamplePage.tsx"],
             ["FakeSort", "/fakesort", "Sorting", "Sorting/FakeSort/FakeSort.tsx"],
-            ["BubbleSort", "/bubblesort", "Sorting", "Sorting/BubbleSort/BubbleSort.tsx"]
+            ["BubbleSort", "/bubblesort", "Sorting", "Sorting/BubbleSort/BubbleSort.tsx"],
+            ["MergeSort", "/mergesort", "Sorting", "Sorting/MergeSort/MergeSort.tsx"]
     ]
     };
 
     const featuredLinks: Links = {
         links: [
-            currLinks.links[1],
-            currLinks.links[0],
-            currLinks.links[2],
+            ...currLinks.links
         ]
     }
 

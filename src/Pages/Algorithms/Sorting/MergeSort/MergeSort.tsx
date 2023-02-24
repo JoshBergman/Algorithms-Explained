@@ -11,63 +11,90 @@ import Speedometer from '../../../../Components/UI/PageComponents/Speedometer/Sp
 
 //Helpers
 import { getRandomArray } from '../../../../Components/Helpers/Random-Array';
-import { sleep } from '../../../../Components/Helpers/Sleep';
 
 export default function Array() {
   const [displayArray, setDisplayArray] = useState(getRandomArray());
   const [sorting, setSorting] = useState(false);
-  const sortRef = useRef<boolean>();
-  sortRef.current = sorting;
 
   //for speed of visual sorting
   const [currSpeed, setCurrSpeed] = useState(50);
   const speedRef = useRef<number>();
   speedRef.current = currSpeed; //allows for use of state in async function
 
-
-  const bubbleSort = async(arr: number[]) => {
-    for (let i = 0; i < arr.length; i++){
-      for(let j = 0; j < (arr.length - i - 1); j++){
-          if(sortRef.current === false){
-            break; //if sorting is false then break execution
-          }
-        if(arr[j] > arr[j+1]){
-          let temp = arr[j];
-          arr[j] = arr[j+1];
-          arr[j+1] = temp;
-        }
-        await sleep(speedRef.current);
-
-        setDisplayArray(arr.concat([])); //updates visual array
-        }
-      }
-    setSorting(false);
+  let timeI = 1;
+  const nextTime = ():number => {
+    let buffer: number = 10;
+    if(speedRef.current){
+        buffer = speedRef.current;
+    }
+    timeI++;
+    const returnVal = timeI * buffer;
+    if(timeI >= 100){
+        setTimeout(()=>{setSorting(false)}, returnVal);
+    }
+    return timeI * buffer;
   };
+
+
+
+  const mergeSort = (arr: number[]): number[] => {
+    if (arr.length <= 1) {
+      return arr;
+    }
+  
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+    
+    return merge(mergeSort(left), mergeSort(right));
+  }
+  
+  const merge = (left: number[], right: number[]) => {
+    let resultArray = [], leftIndex = 0, rightIndex = 0;
+  
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] < right[rightIndex]) {
+        resultArray.push(left[leftIndex]);
+        leftIndex++;
+      } else {
+        resultArray.push(right[rightIndex]);
+        rightIndex++;
+      }
+    }
+    const leftSide = left.slice(leftIndex);
+    const rightSide = right.slice(rightIndex);
+    const returnArray = resultArray.concat(leftSide.concat(rightSide));
+
+    setTimeout(() => {
+        setDisplayArray(returnArray);
+    }, nextTime());
+    return returnArray;
+  }
+
+
 
   const buttonHandlerReset = () => {
     if(!sorting){
       setDisplayArray(getRandomArray());
-    }
-    if(sorting){
-      setSorting(false);
+      timeI = 0;
     }
   };
 
   const buttonHandlerSort = () => {
     if(!sorting){
       setSorting(true);
-      setTimeout(() => {bubbleSort(displayArray);}, 250);
+      setTimeout(() => {mergeSort(displayArray);}, 250);
     }
   };
 
 
   //page info -------------------------------------------------------------------
-  const pageTitle = "BubbleSort()";
+  const pageTitle = "MergeSort()";
   const algo = <ArrayVisualizer newArray={displayArray} />
   const buttons = (
     <React.Fragment>        
       <Button onClick={buttonHandlerSort}>Sort</Button>
-      <Button onClick={buttonHandlerReset}>{sorting ? "Pause" : "Reset"}</Button>
+      <Button onClick={buttonHandlerReset}>{sorting ? "Sorting..." : "Reset"}</Button>
       <Speedometer currSpeed={currSpeed} setSpeed={setCurrSpeed} />
     </React.Fragment>
     );
