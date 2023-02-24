@@ -3,5 +3,8 @@ export const sleep = (timeInMS: number | undefined) => {
     if(timeInMS === undefined) {
         useNum = 5;
     }
+    if(timeInMS === 0) {
+        useNum = 0.01;
+    }
     return new Promise(resolve => setTimeout(resolve, useNum));
 };
