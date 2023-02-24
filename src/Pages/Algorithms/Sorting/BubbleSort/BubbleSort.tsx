@@ -14,56 +14,64 @@ import { getRandomArray } from '../../../../Components/Helpers/Random-Array';
 import { sleep } from '../../../../Components/Helpers/Sleep';
 
 export default function Array() {
-    const [sorting, setSorting] = useState(false);
-    const [displayArray, setDisplayArray] = useState(getRandomArray());
-
-    //for speed of visual sorting
-    const [currSpeed, setCurrSpeed] = useState(50);
-    const speedRef = useRef<number>();
-    speedRef.current = currSpeed; //allows for use of state in async function
+  const [displayArray, setDisplayArray] = useState(getRandomArray());
+  const [sorting, setSorting] = useState(false);
+  const sortRef = useRef<boolean>();
+  sortRef.current = sorting;
 
 
-    const bubbleSort = async(arr: number[]) => {
-      setSorting(true);
+  //for speed of visual sorting
+  const [currSpeed, setCurrSpeed] = useState(50);
+  const speedRef = useRef<number>();
+  speedRef.current = currSpeed; //allows for use of state in async function
 
-      for (let i = 0; i < arr.length; i++){
-        for(let j = 0; j < (arr.length - i - 1); j++){
-            if(arr[j] > arr[j+1]){
-              let temp = arr[j];
-              arr[j] = arr[j+1];
-              arr[j+1] = temp;
-            }
-            await sleep(speedRef.current);
 
-            setDisplayArray(arr.concat([])); //updates visual array
+  const bubbleSort = async(arr: number[]) => {
+    for (let i = 0; i < arr.length; i++){
+      for(let j = 0; j < (arr.length - i - 1); j++){
+          if(sortRef.current === false){
+            break; //if sorting is false then break execution
           }
+        if(arr[j] > arr[j+1]){
+          let temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
         }
+        await sleep(speedRef.current);
+
+        setDisplayArray(arr.concat([])); //updates visual array
+        }
+      }
+    setSorting(false);
+  };
+
+
+  const buttonHandlerReset = () => {
+    if(!sorting){
+      setDisplayArray(getRandomArray());
+    }
+    if(sorting){
       setSorting(false);
-    };
+    }
+  };
 
+  const buttonHandlerSort = () => {
+    if(!sorting){
+      setSorting(true);
+      setTimeout(() => {bubbleSort(displayArray);}, 250);
+    }
+  };
 
-    const buttonHandlerReset = () => {
-      if(!sorting){
-        setDisplayArray(getRandomArray());
-      }
-    };
-
-    const buttonHandlerSort = () => {
-      if(!sorting){
-        bubbleSort(displayArray);
-      }
-    };
-
-    //page info
-    const pageTitle = "Bubble Sort";
-    const algo = <ArrayVisualizer newArray={displayArray} />
-    const buttons = (
-      <React.Fragment>        
-        <Button onClick={buttonHandlerSort}>Sort</Button>
-        <Button onClick={buttonHandlerReset}>Reset</Button>
-        <Speedometer currSpeed={currSpeed} setSpeed={setCurrSpeed} />
-      </React.Fragment>
-      );
+  //page info
+  const pageTitle = "Bubble Sort";
+  const algo = <ArrayVisualizer newArray={displayArray} />
+  const buttons = (
+    <React.Fragment>        
+      <Button onClick={buttonHandlerSort}>Sort</Button>
+      <Button onClick={buttonHandlerReset}>{sorting ? "Pause" : "Reset"}</Button>
+      <Speedometer currSpeed={currSpeed} setSpeed={setCurrSpeed} />
+    </React.Fragment>
+    );
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
