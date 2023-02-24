@@ -1,41 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageTemplate/AlgoPageTemplate';
 
-//Page element availablee
-import Button from '../../../../Components/UI/PageComponents/Button/Button';
+//Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
-
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
+import Button from '../../../../Components/UI/PageComponents/Button/Button';
+import Speedometer from '../../../../Components/UI/PageComponents/Speedometer/Speedometer';
+
+//Helpers
 import { getRandomArray } from '../../../../Components/Helpers/Random-Array';
+import { sleep } from '../../../../Components/Helpers/Sleep';
 
 export default function Array() {
-    const originalArray = getRandomArray();
-    const [currArray, setCurrArray] = useState(originalArray);
-    
-    const pageTitle = "Fake Sort 4 Visualizer Testing";
-    const algo = <ArrayVisualizer newArray={currArray} />
-    //algo attribute is for the showcase, and is just a container for a custom component
+    const [sorting, setSorting] = useState(false);
+    const [displayArray, setDisplayArray] = useState(getRandomArray());
+
+    //for speed of visual sorting
+    const [currSpeed, setCurrSpeed] = useState(50);
+    const speedRef = useRef<number>();
+    speedRef.current = currSpeed; //allows for use of state in async function
 
 
-    const buttonHandler = () => {
-      const arrayCopy = currArray.concat([]);
-      const sorted = arrayCopy.sort((a,b) => a-b);
+    const bubbleSort = async(arr: number[]) => {
+      setSorting(true);
 
-      setCurrArray(sorted);
+      for (let i = 0; i < arr.length; i++){
+        for(let j = 0; j < (arr.length - i - 1); j++){
+            if(arr[j] > arr[j+1]){
+              let temp = arr[j];
+              arr[j] = arr[j+1];
+              arr[j+1] = temp;
+            }
+            await sleep(speedRef.current);
+
+            setDisplayArray(arr.concat([])); //updates visual array
+          }
+        }
+      setSorting(false);
     };
-    
+
+
     const buttonHandlerReset = () => {
-      setCurrArray(getRandomArray());
+      if(!sorting){
+        setDisplayArray(getRandomArray());
+      }
     };
 
+    const buttonHandlerSort = () => {
+      if(!sorting){
+        bubbleSort(displayArray);
+      }
+    };
+
+    //page info
+    const pageTitle = "Bubble Sort";
+    const algo = <ArrayVisualizer newArray={displayArray} />
     const buttons = (
-    <React.Fragment>        
-      <Button onClick={buttonHandler}>Sort</Button>
-      <Button onClick={buttonHandlerReset}>Reset</Button>
-    </React.Fragment>
-    );
+      <React.Fragment>        
+        <Button onClick={buttonHandlerSort}>Sort</Button>
+        <Button onClick={buttonHandlerReset}>Reset</Button>
+        <Speedometer currSpeed={currSpeed} setSpeed={setCurrSpeed} />
+      </React.Fragment>
+      );
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

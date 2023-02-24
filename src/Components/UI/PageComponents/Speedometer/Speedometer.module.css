@@ -1,0 +1,41 @@
+.mainContainer {
+    height: fit-content;
+    width: fit-content;
+    display: inline-block;
+}
+
+.btn {
+    transition: all 0.1s ease-in-out;
+    font-size: x-large;
+    border: 0 solid transparent;
+    background-color: transparent;
+    transform: translateX(-10px);
+}
+
+.btn:nth-child(1){
+    transform: translateX(10px);
+}
+
+.btn:hover {
+    transform: translateX(-8px);
+}
+
+.btn:nth-child(1):hover{
+    transform: translateX(8px);
+}
+
+.currSpeedContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: nowrap;
+}
+
+.speedBar {
+    height: 16px;
+    width: 8px;
+    margin: 1px;
+    margin-top: 2px;
+
+    border: 2px solid;
+    padding: 1px;
+}

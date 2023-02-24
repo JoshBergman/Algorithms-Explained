@@ -9,6 +9,11 @@ interface IArrayVisualizerProps {
 
 export default function ArrayVisualizer({newArray}: IArrayVisualizerProps) {
   const styleCTX = useContext(StyleContext);
+
+  const borderColor = {
+    borderColor: styleCTX.theme.text1.color,
+  };
+
   const combineStyles = (barValue: number) => {
     const appliedStyles = {
       ...styleCTX.theme.mutedLogoBackground1,
@@ -18,17 +23,12 @@ export default function ArrayVisualizer({newArray}: IArrayVisualizerProps) {
     return appliedStyles;
   };
 
-  const borderColor = {
-    borderColor: styleCTX.theme.text1.color,
-  };
-
   return (
     <div className={styles.barContainer} style={borderColor} >
         {
            newArray.map((arrayInt) => {
                 return (
                 <div key={arrayInt + Math.random()} style={combineStyles(arrayInt)} className={styles.graphBar} />
-
             );
         })
         }

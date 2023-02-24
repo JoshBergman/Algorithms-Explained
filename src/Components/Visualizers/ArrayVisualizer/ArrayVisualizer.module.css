@@ -1,8 +1,9 @@
 .barContainer {
     width: 100%;
-    height: fit-content;
+    height: 225px;
     margin-top: 50px;
 
+    overflow: hidden;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: nowrap;
