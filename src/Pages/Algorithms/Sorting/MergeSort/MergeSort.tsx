@@ -21,6 +21,7 @@ export default function Array() {
   const speedRef = useRef<number>();
   speedRef.current = currSpeed; //allows for use of state in async function
 
+  //used to create illusion of actively sorting. Standard method is problematic with recursive functions
   let timeI = 1;
   const nextTime = ():number => {
     let buffer: number = 10;
