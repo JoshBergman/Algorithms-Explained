@@ -28,7 +28,8 @@ export const LinksProvider = ({children}:IProviderProps) => {
             ["Array", "/array", "Data Structure", "Data-Structures/Array/Array.tsx"], 
             ["Bubble Sort", "/bubblesort", "Sorting", "Sorting/BubbleSort/BubbleSort.tsx"],
             ["Merge Sort", "/mergesort", "Sorting", "Sorting/MergeSort/MergeSort.tsx"],
-            ["Insertion Sort", "/insertionsort", "Sorting", "Sorting/InsertionSort/InsertionSort.tsx"]
+            ["Insertion Sort", "/insertionsort", "Sorting", "Sorting/InsertionSort/InsertionSort.tsx"],
+            ["Selection Sort", "/selectionsort", "Sorting", "Sorting/SelectionSort/SelectionSort.tsx"]
     ]
     };
 
