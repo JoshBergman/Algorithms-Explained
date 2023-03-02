@@ -55,7 +55,7 @@ export default function SelectionSort() {
     setDisplayArray(arr);
     setSorting(false);
     return arr;
-};
+ };
 
 //handlers
   const buttonHandlerReset = () => {
