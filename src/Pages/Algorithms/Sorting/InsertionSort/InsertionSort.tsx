@@ -114,10 +114,18 @@ export default function Array() {
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
 
-        <H centered={true}>BubbleSort Overview</H>
-        <P>Bubble sort is a simple sorting algorithm that is used to arrange elements of a list or array in ascending or descending order.
-           It is a straightforward algorithm that compares each element of an array to its adjacent element,
-           and if they are not in the desired order, they are swapped.
+        <H centered={true}>Insertion Sort Overview</H>
+        <P>Insertion sort is a simple and intuitive algorithm used to sort a list of elements in ascending or descending order.
+           It works by dividing the list into two parts: a sorted part and an unsorted part.
+           At the beginning, the sorted part is empty, and the unsorted part is the entire list.
+        </P>
+
+        <P>
+        The algorithm iterates through the unsorted part of the list, one element at a time, and inserts each element into its correct position in the sorted part of the list. To do this, it compares the current element with the elements in the sorted part of the list, starting from the right end, until it finds the correct position to insert the current element.
+        </P>
+
+        <P>
+        The algorithm repeats this process for each element in the unsorted part of the list until the entire list is sorted. At the end of each iteration, the last element in the sorted part of the list is the largest element seen so far.
         </P>
 
         <H>InsertionSort() Implementation (TS)</H>
@@ -125,25 +133,14 @@ export default function Array() {
           {algoText}
         </CodeSnippet>
 
-        <H>How BubbleSort Works</H>
-        <P>To start, the algorithm looks at the first two items in the list and compares them.
-           If the first item is greater than the second item, they are swapped. Then, the algorithm moves on to the second and third items in the list and compares them.
-            If they are in the wrong order, they are swapped as well. 
-           This process continues, comparing and swapping adjacent items until the end of the list is reached.
-        </P>
-        <P>
-          At this point, the algorithm has completed one pass through the list.
-          However, there may still be items in the wrong order.
-          So, the algorithm starts again at the beginning of the list and repeats the process of comparing and swapping adjacent items until the end of the list is reached.
-           This process is repeated until no more swaps are needed, meaning the list is fully sorted.
-        </P>
-
         <H>Time Complexity: Slow</H>
-        <P>Best: O(n)</P> 
-        <P>Worst: O(n<sup>2</sup>)</P>
-        <P>While bubble sort is easy to understand and implement, it can be quite slow for large lists.
-           This is because it requires many passes through the list, and each pass may only swap a few items at a time.
-           However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
+        <P>O(n<sup>2</sup>)</P> 
+        <P>The time complexity of insertion sort is O(n<sup>2</sup>), where n is the number of elements in the input list.
+           This means that the time it takes to sort the list increases quadratically with the number of elements in the list.
+           In the worst-case scenario, where the input list is in reverse order, the algorithm will make n<sup>2/2</sup> comparisons and n<sup>2/2</sup> swaps.
+           However, if the input list is already partially sorted, insertion sort can have a best-case time complexity of O(n), where only n-1 comparisons and 0 swaps are needed to sort the list.
+           In general, insertion sort performs well on small lists or nearly sorted lists, but becomes less efficient on larger, unsorted lists.
+           As a result, it is typically not used for large-scale sorting applications, where more efficient algorithms such as quicksort or mergesort are preferred.
         </P>
 
     </AlgoPageTemplate>
