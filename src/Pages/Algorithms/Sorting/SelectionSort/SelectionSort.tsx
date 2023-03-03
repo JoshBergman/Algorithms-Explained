@@ -116,36 +116,39 @@ export default function SelectionSort() {
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
 
-        <H centered={true}>BubbleSort Overview</H>
-        <P>Bubble sort is a simple sorting algorithm that is used to arrange elements of a list or array in ascending or descending order.
-           It is a straightforward algorithm that compares each element of an array to its adjacent element,
-           and if they are not in the desired order, they are swapped.
+        <H centered={true}>SelectionSort Overview</H>
+        <P>Selection sort is a simple and intuitive algorithm used to sort a list of elements in ascending or descending order. 
+          It works by repeatedly finding the smallest element in the unsorted part of the list and moving it to the beginning of the sorted part of the list.
         </P>
 
-        <H>InsertionSort() Implementation (TS)</H>
+        <H>SelectionSort() Implementation (TS)</H>
         <CodeSnippet>
           {algoText}
         </CodeSnippet>
 
-        <H>How BubbleSort Works</H>
-        <P>To start, the algorithm looks at the first two items in the list and compares them.
-           If the first item is greater than the second item, they are swapped. Then, the algorithm moves on to the second and third items in the list and compares them.
-            If they are in the wrong order, they are swapped as well. 
-           This process continues, comparing and swapping adjacent items until the end of the list is reached.
+        <H>How SelectionSort Works</H>
+        <P>To begin, the algorithm starts with the entire list as the unsorted part and an empty list as the sorted part. 
+          Then, it finds the smallest element in the unsorted part of the list and moves it to the beginning of the sorted part of the list. 
+          This process is repeated for each element in the unsorted part of the list, until the entire list is sorted.
         </P>
+
         <P>
-          At this point, the algorithm has completed one pass through the list.
-          However, there may still be items in the wrong order.
-          So, the algorithm starts again at the beginning of the list and repeats the process of comparing and swapping adjacent items until the end of the list is reached.
-           This process is repeated until no more swaps are needed, meaning the list is fully sorted.
+          To find the smallest element in the unsorted part of the list, the algorithm compares each element in the unsorted part of the list with the current smallest element, which is initially set to the first element of the unsorted part of the list. 
+          If a smaller element is found, the current smallest element is updated to be the new smallest element.
         </P>
 
         <H>Time Complexity: Slow</H>
-        <P>Best: O(n)</P> 
-        <P>Worst: O(n<sup>2</sup>)</P>
-        <P>While bubble sort is easy to understand and implement, it can be quite slow for large lists.
-           This is because it requires many passes through the list, and each pass may only swap a few items at a time.
-           However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
+        <P>O(n<sup>2</sup>)</P>
+        <P>The time complexity of selection sort is O(n<sup>2</sup>), where n is the number of elements in the input list. 
+          This means that the time it takes to sort the list increases quadratically with the number of elements in the list. 
+          In the worst-case scenario, where the input list is in reverse order, selection sort will make n<sup>2/2</sup> comparisons and n swaps. 
+        </P>
+          
+        <P>
+          However, unlike some other sorting algorithms, selection sort always makes the same number of comparisons and swaps, regardless of the input. 
+          This predictability makes it useful for teaching beginners about sorting algorithms, but it also makes it less efficient than some other algorithms. 
+          In general, selection sort is best suited for small lists or for lists that are already partially sorted. 
+          For larger or more complex lists, more efficient sorting algorithms, such as merge sort or quicksort, are usually preferred.
         </P>
 
     </AlgoPageTemplate>
