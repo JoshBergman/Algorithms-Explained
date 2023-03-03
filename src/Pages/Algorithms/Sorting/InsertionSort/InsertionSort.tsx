@@ -114,7 +114,7 @@ export default function Array() {
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
 
-        <H centered={true}>Insertion Sort Overview</H>
+        <H centered={true}>InsertionSort Overview</H>
         <P>Insertion sort is a simple and intuitive algorithm used to sort a list of elements in ascending or descending order.
            It works by dividing the list into two parts: a sorted part and an unsorted part.
            At the beginning, the sorted part is empty, and the unsorted part is the entire list.
