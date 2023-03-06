@@ -17,3 +17,16 @@
 .hc {
     text-align: center;
 }
+
+.RefLink {
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.RefLink:hover {
+    text-decoration: none;
+}
