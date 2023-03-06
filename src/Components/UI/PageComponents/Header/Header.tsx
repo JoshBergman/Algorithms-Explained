@@ -23,7 +23,7 @@ export default function Header() {
     <div className={styles.mainContainer} style={opacityAnimationStyle}>
       <div className={styles.alignmentContainer}>
         <div className={styles.leftContainer}>
-          <Link to="/" className={styles.logo} style={styleCTX.mutedLogoText1}>Algos-X</Link>
+          <Link to="/" className={styles.logo} style={styleCTX.mutedLogoText1}>Algo Example</Link>
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.linksContainer} >
