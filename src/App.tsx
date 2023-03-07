@@ -8,6 +8,7 @@ import { LinksContext } from './Store/LinksContext';
 import Landing from './Pages/Landing/Landing';
 import Algorithms from './Pages/Landing/Algorithms';
 import Header from './Components/UI/PageComponents/Header/Header';
+import Footer from './Components/UI/PageComponents/Footer/Footer';
 
 
 // TODO Replace loading placeholder with actual loading spinner
@@ -55,6 +56,7 @@ function App() {
         />
       </Routes>
     </Suspense> 
+    <Footer />
     </div>
   );
 }

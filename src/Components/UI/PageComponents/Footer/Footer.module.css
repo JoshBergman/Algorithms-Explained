@@ -1,0 +1,17 @@
+.footerContainer {
+    width: 100%;
+    height: fit-content;
+    padding-top: 20px;
+    padding-bottom: 10px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    background-color: rgba(31, 31, 31, 0.72);
+}
+
+.textContainer {
+    width: 100px;
+    height: 100px;
+}
