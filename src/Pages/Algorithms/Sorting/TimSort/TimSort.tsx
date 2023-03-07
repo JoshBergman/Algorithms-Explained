@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageTemplate/AlgoPageTemplate';
-import { Link } from 'react-router-dom';
 
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
@@ -29,7 +28,7 @@ export default function TimSort() {
 
   // inplace insertion sort
     // replace left with 0 and right with length-1 for normal insertion sort
-    const insertionSort = (sortArray: number[], left: number, right: number) => {
+    const insertionSort = async (sortArray: number[], left: number, right: number) => {
       for (let i = left + 1; i <= right; i++) {
           const pivot = sortArray[i];
           let j = i - 1;
@@ -38,6 +37,9 @@ export default function TimSort() {
               // you always know the location of the index to compare to so there is no need for a temp index
               sortArray[j + 1] = sortArray[j];
               j--;
+
+              await sleep(speedRef.current);
+              setDisplayArray(sortArray.concat([]));
           }
           sortArray[j + 1] = pivot;
       }
@@ -86,7 +88,7 @@ export default function TimSort() {
       const RUN = 10 // normaly this would be 64 but that is very large for our data set, might be nice for this to be user controled
       const len = sortArray.length;
       for (let i = 0; i < len; i += RUN) {
-          insertionSort(sortArray, i, Math.min(i + RUN - 1, len - 1));
+          await insertionSort(sortArray, i, Math.min(i + RUN - 1, len - 1));
           
           await sleep(speedRef.current);
           setDisplayArray(sortArray.concat([]));
