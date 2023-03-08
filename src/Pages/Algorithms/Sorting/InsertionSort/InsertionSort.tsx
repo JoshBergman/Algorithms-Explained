@@ -48,6 +48,11 @@ export default function Array() {
             arr[prevItemIndex] = arr[tempIndex];
             arr[tempIndex] = swapTemp;
 
+            // Visualizer instructions
+              await sleep(speedRef.current);
+              setDisplayArray(arr.concat([]));
+            // /Visualizer instructions
+
             //decrements
             tempIndex = tempIndex - 1;
             prevItemIndex = prevItemIndex - 1;
