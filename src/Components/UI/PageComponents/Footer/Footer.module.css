@@ -1,17 +1,21 @@
 .footerContainer {
-    width: 100%;
     height: fit-content;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    width: fit-content;
+    padding: 20px;
 
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-
-    background-color: rgba(31, 31, 31, 0.72);
+    margin-left: 25%;
 }
 
-.textContainer {
-    width: 100px;
-    height: 100px;
+.word, .copy {
+    display: inline-block;
+    margin: 10px;
+    padding-right: 10px;
+    margin-right: 0;
+    border-right: 2px solid black;
+
+    text-decoration: none;
+}
+
+.word:hover {
+    text-decoration: underline;
 }

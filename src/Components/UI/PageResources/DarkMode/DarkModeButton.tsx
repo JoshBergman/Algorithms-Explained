@@ -40,12 +40,12 @@ export default function DarkModeButton() {
     <React.Fragment>
       {isLight && 
         <button onClick={toDarkModeHandler} className={styles.button}>
-          <BsFillMoonFill className={styles.sun} style={animationStyle} />
+          <FaLightbulb className={styles.sun} style={animationStyle} />
         </button>
       }
       {!isLight && 
         <button onClick={toLightModeHandler} className={styles.button}>
-          <FaLightbulb className={styles.moon} style={animationStyle} />
+          <BsFillMoonFill className={styles.moon} style={animationStyle} />
         </button>
       }
     </React.Fragment>

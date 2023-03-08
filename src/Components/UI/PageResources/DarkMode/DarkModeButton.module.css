@@ -2,9 +2,13 @@
     width: fit-content;
     height: fit-content;
 
-    margin-top: 6px;
+    margin-top: 0;
     background-color: transparent;
     border: 0 solid transparent;
+}
+
+.button:hover {
+    cursor: pointer;
 }
 
 .sun,

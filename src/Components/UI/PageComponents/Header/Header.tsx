@@ -23,11 +23,11 @@ export default function Header() {
     <div className={styles.mainContainer} style={opacityAnimationStyle}>
       <div className={styles.alignmentContainer}>
         <div className={styles.leftContainer}>
-          <Link to="/" className={styles.logo} style={styleCTX.mutedLogoText1}>Algo Example</Link>
+          <Link to="/" className={styles.logo} style={styleCTX.text1}>Algo Example</Link>
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.linksContainer} >
-            <Link to="/algorithms" className={styles.link} style={styleCTX.mutedLogoText1}>Algorithms</Link>
+            <Link to="/algorithms" className={styles.link} style={styleCTX.text1}>Algorithms</Link>
           <DarkModeButton />
           </div>
         </div>
