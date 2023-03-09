@@ -6,7 +6,6 @@ import { StyleContext } from './Store/ThemeContext';
 import { LinksContext } from './Store/LinksContext';
 
 import Landing from './Pages/Landing/Landing';
-import Algorithms from './Pages/Landing/Algorithms';
 import Header from './Components/UI/PageComponents/Header/Header';
 import Footer from './Components/UI/PageComponents/Footer/Footer';
 
@@ -17,6 +16,8 @@ function App() {
   const styleCTX = useContext(StyleContext);
   const linksCTX = useContext(LinksContext);
   const allLinks = linksCTX.allLinks.links;
+
+  const Algorithms = React.lazy(() => import('./Pages/Landing/Algorithms'));
 
   //generates a lazy-loaded renderable for each stored page in links context | access by using the page title in the elements object ex: elements["title"]
   const elements: any = {};
