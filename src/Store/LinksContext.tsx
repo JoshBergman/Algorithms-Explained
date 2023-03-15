@@ -31,7 +31,8 @@ export const LinksProvider = ({children}:IProviderProps) => {
             ["Insertion Sort", "/insertionsort", "Sorting", "Sorting/InsertionSort/InsertionSort.tsx"],
             ["Selection Sort", "/selectionsort", "Sorting", "Sorting/SelectionSort/SelectionSort.tsx"],
             ["TimSort", "/timsort", "Sorting", "Sorting/TimSort/TimSort.tsx"],
-            ["QuickSort", "/quicksort", "Sorting", "Sorting/QuickSort/QuickSort.tsx"]
+            ["QuickSort", "/quicksort", "Sorting", "Sorting/QuickSort/QuickSort.tsx"],
+            ["Minesweeper", '/minesweeper', 'Game', "Games/Minesweeper/Minesweeper.tsx"]
     ]
     };
 
