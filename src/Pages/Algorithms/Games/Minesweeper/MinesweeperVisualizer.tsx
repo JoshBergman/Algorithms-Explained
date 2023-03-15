@@ -22,7 +22,23 @@ export default function MinesweeperVisualizer({userBoard}: IMSVisualProps) {
         for(let i = thisHeight; i >= 0; i--){
             const boardRow = [];
             for(let j = 0; j < thisWidth; j++){
-                boardRow.push(<div key={nextK()} className={styles.cell}>{board[j][i]}</div>);
+                boardRow.push(
+                <div 
+                 onContextMenu={(e) => {
+                    e.preventDefault(); 
+                    cellRightClickHandler(j, i);
+                    }
+                } 
+                 onClick={() => {
+                    cellLeftClickHandler(j, i);
+                    }
+                } 
+                 key={nextK()} 
+                 className={styles.cell}
+                 >
+                  {board[j][i]}
+                </div>
+                );
             }
             renderableBoard.push(boardRow);
         }
@@ -30,18 +46,17 @@ export default function MinesweeperVisualizer({userBoard}: IMSVisualProps) {
         return renderableBoard;
     };
 
-    const auxHandler = (e:any) => {
-        e.preventDefault();
-        console.log("Right Click")
+    const cellRightClickHandler = (x: number, y: number) => {
+        console.log("Right Click at " + x + ", " + y);
     }
 
-    const other = () => {
-        console.log("Left Click");
+    const cellLeftClickHandler = (x: number, y: number) => {
+        console.log("Left Click at " + x + ", " + y);
     }
 
   return (
-    <div onContextMenu={auxHandler} onClick={other}>
+    <div>
         {mapBoard(userBoard, height, width).map(row => <div className={styles.row} key={nextK()}>{row}</div>)}
     </div>
-  )
+  );
 }
