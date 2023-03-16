@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiFlag } from 'react-icons/bi';
+import { FaVirus } from 'react-icons/fa';
 
 import styles from './Minesweeper.module.css';
 
@@ -8,6 +9,7 @@ interface IMSVisualProps {
     msActions: {
         leftClick: (x: number, y: number) => void;
         rightClick: (x: number, y: number) => void;
+        clickedMine: () => void;
     }
 }
 
@@ -29,8 +31,12 @@ export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualP
                 return;
                 break;
             case 'F':
-                return <BiFlag />;
+                return <BiFlag style={{color : "rgb(195, 29, 29)"}} className={styles.cellItem}/>;
                 break; 
+            case 'M':
+                msActions.clickedMine();
+                return <FaVirus style={{color : "rgb(195, 29, 29)"}} className={styles.cellItem} />;
+                break;
             default:
                 return input;
                 break;

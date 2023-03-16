@@ -9,11 +9,14 @@ import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/Cod
 //Helpers
 import { msGame } from './MinesweeperFunctions';
 import MinesweeperVisualizer from './MinesweeperVisualizer';
+import Button from '../../../../Components/UI/PageComponents/Button/Button';
 
 export default function Minesweeper() {
   const [userBoard, setUserBoard] = useState<any[][]>( msGame.getDefaultBoard() );
   const [gameBoard, setGameBoard] = useState([[1, 0], [0, 1]]);
+
   const [started, setStarted] = useState(false);
+  const [lost, setLost] = useState(false);
 
   const firstClick = (x: number, y: number) => {
     const newGameBoard: number[][] = [];
@@ -25,27 +28,44 @@ export default function Minesweeper() {
     };
 
   const leftClick = (x: number, y: number) => {
-    if(!started){
+    if(!started && !lost){
       setStarted(true);
       firstClick(x, y);
       return;
     }
+    else if (!lost){
     const user = userBoard.concat([]);
 
     msGame.leftClick(gameBoard, user, x, y);
     setUserBoard(user);
+    }
   };
 
   const rightClick = (x: number, y: number) => {
+    if(lost){
+      return;
+    }
     const user = userBoard.concat([]);
 
     msGame.rightClick(user, x, y);
     setUserBoard(user);
   };
 
+
+  const clickedMine = () => {
+    setLost(true);
+  };
+
+  const reset = () => {
+    setUserBoard( msGame.getDefaultBoard() );
+    setLost(false);
+    setStarted(false);
+  };
+
   const msActions = {
     leftClick: leftClick,
     rightClick: rightClick,
+    clickedMine: clickedMine,
   };
 
 
@@ -53,7 +73,8 @@ export default function Minesweeper() {
   const pageTitle = "Minesweeper";
   const algo = <MinesweeperVisualizer userBoard={userBoard} msActions={msActions}/>
   const buttons = (
-    <React.Fragment>        
+    <React.Fragment>     
+      <Button onClick={reset} >Reset</Button>   
     </React.Fragment>
     );
 

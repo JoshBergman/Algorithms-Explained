@@ -81,7 +81,7 @@ const leftClick = (game: number[][], user: any[][], x: number, y: number) => {
     switch(thisCellValue){
         case 1:
             if(thisUserValue === 'U'){
-                console.log('You Lose');
+                user[x][y] = 'M';
             }
             break;
         case 0:
