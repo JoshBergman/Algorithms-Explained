@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiFlag } from 'react-icons/bi';
 
 import styles from './Minesweeper.module.css';
 
@@ -21,6 +22,21 @@ export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualP
         return k;
     };
 
+    const getMSIcon = (input: any) => {
+        switch(input){
+            case 0:
+            case 'U':
+                return;
+                break;
+            case 'F':
+                return <BiFlag />;
+                break; 
+            default:
+                return input;
+                break;
+        }
+    };
+
     const mapBoard = (board: any[][], thisHeight: number, thisWidth: number) => {
         const renderableBoard = [];
         for(let i = thisHeight; i >= 0; i--){
@@ -38,9 +54,9 @@ export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualP
                     }
                 } 
                  key={nextK()} 
-                 className={styles.cell}
+                 className={board[j][i] === 'U' ? styles.cellOther : styles.cell}
                  >
-                  {board[j][i]}
+                  {getMSIcon(board[j][i])}
                 </div>
                 );
             }

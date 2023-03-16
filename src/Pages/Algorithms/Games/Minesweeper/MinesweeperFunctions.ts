@@ -14,8 +14,8 @@ REPRESENTED AS AN ARRAY FOR USE IN REACT
     // '1' Mine
 // /key
 
-const height = 8;
-const width = 10;
+const height = 10;
+const width = 11;
 
 //helpers
 const checkBoundary = (x: number, y: number, modifier: number = 0) => {
