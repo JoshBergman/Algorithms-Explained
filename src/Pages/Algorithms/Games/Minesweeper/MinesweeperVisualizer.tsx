@@ -34,8 +34,10 @@ export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualP
                 return <BiFlag style={{color : "rgb(195, 29, 29)"}} className={styles.cellItem}/>;
                 break; 
             case 'M':
-                msActions.clickedMine();
                 return <FaVirus style={{color : "rgb(195, 29, 29)"}} className={styles.cellItem} />;
+                break;
+            case 'W':
+                return <FaVirus style={{color : "rgb(195, 29, 29)"}} className={styles.clickedMine} />;
                 break;
             default:
                 return input;

@@ -36,8 +36,12 @@ export default function Minesweeper() {
     else if (!lost){
     const user = userBoard.concat([]);
 
-    msGame.leftClick(gameBoard, user, x, y);
+    const failed = msGame.leftClick(gameBoard, user, x, y);
     setUserBoard(user);
+
+    if (failed) {
+      setLost(true);
+    }
     }
   };
 

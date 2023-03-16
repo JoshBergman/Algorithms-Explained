@@ -81,7 +81,9 @@ const leftClick = (game: number[][], user: any[][], x: number, y: number) => {
     switch(thisCellValue){
         case 1:
             if(thisUserValue === 'U'){
-                user[x][y] = 'M';
+                showMinesOnLoss(game, user);
+                user[x][y] = 'W';
+                return true;
             }
             break;
         case 0:
@@ -95,6 +97,7 @@ const leftClick = (game: number[][], user: any[][], x: number, y: number) => {
         default: 
             return;
     }
+    return false;
 };
 
 const rightClick = (user: any[][], x: number, y: number) => {
@@ -211,9 +214,20 @@ const getDefaultBoard = () => {
     return pseudoBoard;
 };
 
+const showMinesOnLoss = (game: number[][], user: any[][]) => {
+    for(let i = 0; i < game.length; i++){
+        for(let j = 0; j < game[0].length; j++){
+            if(game[i][j] === 1){
+                user[i][j] = 'M';
+            }
+        }
+    }
+}
+
 export const msGame = {
     generateGameBoard: generateGameBoard,
     leftClick: leftClick,
     rightClick: rightClick,
-    getDefaultBoard: getDefaultBoard
+    getDefaultBoard: getDefaultBoard,
+    showMinesOnLoss: showMinesOnLoss
 };

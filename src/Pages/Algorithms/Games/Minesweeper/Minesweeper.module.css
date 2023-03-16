@@ -22,3 +22,7 @@
     width: fit-content;
     margin-bottom: -4px;
 }
+
+.clickedMine {
+    background-color: rgba(148, 43, 43, 0.477);
+}
