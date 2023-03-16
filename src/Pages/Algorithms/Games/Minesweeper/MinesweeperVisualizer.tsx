@@ -4,9 +4,13 @@ import styles from './Minesweeper.module.css';
 
 interface IMSVisualProps {
     userBoard: any[][];
+    msActions: {
+        leftClick: (x: number, y: number) => void;
+        rightClick: (x: number, y: number) => void;
+    }
 }
 
-export default function MinesweeperVisualizer({userBoard}: IMSVisualProps) {
+export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualProps) {
     const height = userBoard[0].length - 1;
     const width = userBoard.length;
     
@@ -47,11 +51,11 @@ export default function MinesweeperVisualizer({userBoard}: IMSVisualProps) {
     };
 
     const cellRightClickHandler = (x: number, y: number) => {
-        console.log("Right Click at " + x + ", " + y);
+        msActions.rightClick(x, y);
     }
 
     const cellLeftClickHandler = (x: number, y: number) => {
-        console.log("Left Click at " + x + ", " + y);
+        msActions.leftClick(x, y);
     }
 
   return (

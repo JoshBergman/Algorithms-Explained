@@ -5,78 +5,55 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
-import Button from '../../../../Components/UI/PageComponents/Button/Button';
 
 //Helpers
-import { sleep } from '../../../../Components/Helpers/Sleep';
+import { msGame } from './MinesweeperFunctions';
 import MinesweeperVisualizer from './MinesweeperVisualizer';
 
 export default function Minesweeper() {
-  const [userBoard, setUserBoard] = useState([[1, 1], [1, 1]]);
+  const [userBoard, setUserBoard] = useState<any[][]>( msGame.getDefaultBoard() );
   const [gameBoard, setGameBoard] = useState([[1, 0], [0, 1]]);
-  const tempBoard = [
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ],
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ],
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ],
-    [
-      'U', 'U', 'U', 0,
-      0,   'U', 'U', 'U'
-    ],
-    [
-      0, 0,   0,   0,
-      0, 'U', 'U', 'U'
-    ],
-    [
-      0, 'U', 'U', 'U',
-      0, 'U', 'U', 'U'
-    ],
-    [
-      'U', 'U', 'U', 'U',
-      0,   'U', 'U', 'U'
-    ],
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ],
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ],
-    [
-      'U', 'U', 'U',
-      'U', 'U', 'U',
-      'U', 'U'
-    ]
-  ];
+  const [started, setStarted] = useState(false);
 
-  const buttonHandlerReset = () => {
+  const firstClick = (x: number, y: number) => {
+    const newGameBoard: number[][] = [];
+    const newUserBoard: any[][] = [];
+    msGame.generateGameBoard(newGameBoard, newUserBoard, x, y);
+
+    setGameBoard(newGameBoard);
+    setUserBoard(newUserBoard);
+    };
+
+  const leftClick = (x: number, y: number) => {
+    if(!started){
+      setStarted(true);
+      firstClick(x, y);
+      return;
+    }
+    const user = userBoard.concat([]);
+
+    msGame.leftClick(gameBoard, user, x, y);
+    setUserBoard(user);
   };
 
-  const buttonHandlerSort = () => {
+  const rightClick = (x: number, y: number) => {
+    const user = userBoard.concat([]);
+
+    msGame.rightClick(user, x, y);
+    setUserBoard(user);
+  };
+
+  const msActions = {
+    leftClick: leftClick,
+    rightClick: rightClick,
   };
 
 
   //page info -------------------------------------------------------------------
   const pageTitle = "Minesweeper";
-  const algo = <MinesweeperVisualizer userBoard={tempBoard}/>
+  const algo = <MinesweeperVisualizer userBoard={userBoard} msActions={msActions}/>
   const buttons = (
     <React.Fragment>        
-      <Button onClick={buttonHandlerSort}>Sort</Button>
-      <Button onClick={buttonHandlerReset}>Sorter</Button>
     </React.Fragment>
     );
 

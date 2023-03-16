@@ -86,7 +86,7 @@ const leftClick = (game: number[][], user: any[][], x: number, y: number) => {
             break;
         case 0:
             if(thisUserValue === 'U' && mineCount(game, x, y) === 0){
-                regionClear(game, user, x, y);
+                doRegionClear(game, user, x, y);
             } 
             else if(thisUserValue === 'U'){
                 user[x][y] = mineCount(game, x, y);
@@ -138,6 +138,11 @@ const mineCount = (board: number[][], x: number, y: number) => {
     return totalMines;
 };
 
+const doRegionClear = (game: number[][], user: any[][], x: number, y: number) => {
+    regionClear(game, user, x, y);
+    popCellsByZero(game, user);
+}
+
 const regionClear = (game: number[][], user: any[][], x: number, y: number) => {
     const mines = mineCount(game, x, y);
     if(mines === 0 && user[x][y] === 'U' && game[x][y] === 0){
@@ -161,8 +166,54 @@ const regionClear = (game: number[][], user: any[][], x: number, y: number) => {
     }
 };
 
+const popCellsByZero = (game: number[][], user: any[][]) => {
+    for(let i = 0; i < user.length; i++){
+        for(let j = 0; j < user[0].length; j++){
+            const surrounding = checkBoundary(i, j, 1);
+
+            if(surrounding.left && user[i-1][j] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.topLeft && user[i-1][j+1] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.top && user[i][j+1] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.topRight && user[i+1][j+1] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.right && user[i+1][j] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.bottomRight && user[i+1][j-1] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.bottom && user[i][j-1] === 0){
+                leftClick(game, user, i, j)
+            }
+            else if(surrounding.bottomLeft && user[i-1][j-1] === 0){
+                leftClick(game, user, i, j)
+            }
+        }
+    }
+}
+
+const getDefaultBoard = () => {
+    const pseudoBoard = [];
+    for(let i = 0; i < width; i++){
+        const thisColumn = [];
+        for(let j = 0; j < height; j++){
+            thisColumn.push('U');
+        }
+        pseudoBoard.push(thisColumn);
+    }
+    return pseudoBoard;
+};
+
 export const msGame = {
     generateGameBoard: generateGameBoard,
     leftClick: leftClick,
-    rightClick: rightClick
+    rightClick: rightClick,
+    getDefaultBoard: getDefaultBoard
 };
