@@ -172,28 +172,28 @@ const popCellsByZero = (game: number[][], user: any[][]) => {
             const surrounding = checkBoundary(i, j, 1);
 
             if(surrounding.left && user[i-1][j] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.topLeft && user[i-1][j+1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.top && user[i][j+1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.topRight && user[i+1][j+1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.right && user[i+1][j] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.bottomRight && user[i+1][j-1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.bottom && user[i][j-1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
             else if(surrounding.bottomLeft && user[i-1][j-1] === 0){
-                leftClick(game, user, i, j)
+                leftClick(game, user, i, j);
             }
         }
     }
