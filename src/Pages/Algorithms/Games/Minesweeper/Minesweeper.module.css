@@ -1,3 +1,10 @@
+.mainContainer {
+    width: fit-content;
+    height: fit-content;
+    overflow-x: visible;
+    margin: 0 auto;
+}
+
 .cell, .cellOther {
     background-color: rgb(195, 195, 195);
     
@@ -18,7 +25,6 @@
 }
 
 .row {
-    overflow: hidden;
     width: fit-content;
     margin-bottom: -4px;
 }

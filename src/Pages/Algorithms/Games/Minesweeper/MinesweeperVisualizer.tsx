@@ -83,7 +83,7 @@ export default function MinesweeperVisualizer({userBoard, msActions}: IMSVisualP
     }
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
         {mapBoard(userBoard, height, width).map(row => <div className={styles.row} key={nextK()}>{row}</div>)}
     </div>
   );
