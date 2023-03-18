@@ -270,7 +270,6 @@ const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoa
             const thisCell = user[i][j];
             if(thisCell === 'M'){
                 solving = false;
-                console.log('YOU LOST')
                 break;
             }
             if(continueCases(thisCell)){
@@ -332,11 +331,8 @@ const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoa
     if(unmodified){
         doRandomClick = true;
         if(won){
-            console.log('YOU  WON LOSER')
             break;
         }
-    }else{
-        console.log('Solving')
     }
 }
     setUserBoard(user);

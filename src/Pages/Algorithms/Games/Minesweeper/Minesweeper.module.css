@@ -3,6 +3,8 @@
     height: fit-content;
     overflow-x: visible;
     margin: 0 auto;
+
+    min-width: 360px;
 }
 
 .cell, .cellOther {
