@@ -9,6 +9,8 @@ REPRESENTED AS AN ARRAY FOR USE IN REACT
     // '0' Empty cell
     // '1-8' Quantity of mines nearby
 
+import { sleep } from "../../../../Components/Helpers/Sleep";
+
     // Game Board
     // '0' No mine
     // '1' Mine
@@ -57,7 +59,7 @@ const generateGameBoard = (gameBoard: number[][], userBoard: any[][], firstClick
         const thisColumn = [];
         const userColumn = [];
         for(let j = 0; j < height; j++){
-            thisColumn.push(Math.random() >= 0.70 ? 1 : 0);
+            thisColumn.push(Math.random() >= 0.80 ? 1 : 0);
             userColumn.push('U');
         }
         gameBoard.push(thisColumn);
@@ -224,10 +226,127 @@ const showMinesOnLoss = (game: number[][], user: any[][]) => {
     }
 }
 
+const surroundingCells = (board: any[][], x: number, y: number) => {
+    const theseCells: any[][] = [];
+    const surrounding = checkBoundary(x, y, 1);
+
+    const directionCheck = (direction: boolean, x: number, y: number) => {
+        if(direction){
+            theseCells.push([board[x][y], x, y]);
+        }
+    };
+    directionCheck(surrounding.top, x, y+1);
+    directionCheck(surrounding.left, x-1, y);
+    directionCheck(surrounding.right, x+1, y);
+    directionCheck(surrounding.bottom, x, y-1);
+    directionCheck(surrounding.topLeft, x-1, y+1);
+    directionCheck(surrounding.topRight, x+1, y+1);
+    directionCheck(surrounding.bottomLeft, x-1, y-1);
+    directionCheck(surrounding.bottomRight, x+1, y-1);
+
+    return theseCells;
+};
+
+const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoard: any[][]) => void) => {
+    const user = userBoard.concat([])
+    let solving = true;
+    let unmodified = true;
+    let doRandomClick = false;
+    let won = true;
+    const continueCases = (input: string | number) => {
+        switch(input){
+            case 'U':
+            case 'F':
+            case 0:
+                return true;
+        }
+        return false
+    }
+    while(solving){
+        unmodified = true;
+        won = true;
+    for(let i = 0; i < user.length; i++){
+        for(let j = 0; j < user[0].length; j++){
+            const thisCell = user[i][j];
+            if(thisCell === 'M'){
+                solving = false;
+                console.log('YOU LOST')
+                break;
+            }
+            if(continueCases(thisCell)){
+                if(thisCell === 'U'){
+                    won = false;
+                }
+                continue;
+            }
+            let surroundingFlags = 0;
+            let surroundingU = 0;
+
+            const border = surroundingCells(user, i, j);
+            border.forEach((cell) => {
+                switch(cell[0]){
+                    case 'U':
+                        surroundingU++;
+                        break;
+                    case 'F':
+                        surroundingFlags++;
+                        break;
+                }
+            });
+            if(surroundingU === 0){
+                continue;
+            }
+            if(thisCell - surroundingFlags === 0){
+                await sleep(100);
+                for(let e = 0; e < border.length; e++){
+                    if(border[e][0] === 'U'){
+                        unmodified = false;
+                        leftClick(game, user, border[e][1], border[e][2]);
+                        setUserBoard(user.concat([]));
+                    }
+                }
+            }
+            else if (thisCell - surroundingFlags === surroundingU){
+                await sleep(100);
+                for(let e = 0; e < border.length; e++){
+                    if(border[e][0] === 'U'){
+                        unmodified = false;
+                        rightClick(user, border[e][1], border[e][2]);
+                        setUserBoard(user.concat([]));
+                    }
+                }
+            } else if(doRandomClick){
+                let completedClick = false;
+                for(let e = 0; e < border.length; e++){
+                    if(border[e][0] === 'U'){
+                        if(!completedClick){
+                        leftClick(game, user, border[e][1], border[e][2]);
+                        completedClick = false;
+                        doRandomClick = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    if(unmodified){
+        doRandomClick = true;
+        if(won){
+            console.log('YOU  WON LOSER')
+            break;
+        }
+    }else{
+        console.log('Solving')
+    }
+}
+    setUserBoard(user);
+};
+
 export const msGame = {
     generateGameBoard: generateGameBoard,
     leftClick: leftClick,
     rightClick: rightClick,
     getDefaultBoard: getDefaultBoard,
-    showMinesOnLoss: showMinesOnLoss
+    showMinesOnLoss: showMinesOnLoss,
+    solve: solve,
 };

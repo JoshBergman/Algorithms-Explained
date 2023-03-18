@@ -14,6 +14,7 @@ import Button from '../../../../Components/UI/PageComponents/Button/Button';
 export default function Minesweeper() {
   const [userBoard, setUserBoard] = useState<any[][]>( msGame.getDefaultBoard() );
   const [gameBoard, setGameBoard] = useState([[1, 0], [0, 1]]);
+  const [solving, setSolving] = useState(false);
 
   const [started, setStarted] = useState(false);
   const [lost, setLost] = useState(false);
@@ -55,9 +56,21 @@ export default function Minesweeper() {
     setUserBoard(user);
   };
 
-
   const clickedMine = () => {
     setLost(true);
+  };
+
+  const doSolve = () => {
+    if(solving){
+      return;
+    }
+    setSolving(true);
+    autoSolve();
+  };
+
+  const autoSolve = async () => {
+    await msGame.solve(userBoard, gameBoard, setUserBoard);
+    setSolving(false);
   };
 
   const reset = () => {
@@ -78,7 +91,12 @@ export default function Minesweeper() {
   const algo = <MinesweeperVisualizer userBoard={userBoard} msActions={msActions}/>
   const buttons = (
     <React.Fragment>     
+    {solving ? <Button onClick={() => {}}>Solving...</Button> :
+    <React.Fragment>
       <Button onClick={reset} >Reset</Button>   
+      {started ? <Button onClick={doSolve} >Solve</Button> : ""}
+    </React.Fragment>
+    }
     </React.Fragment>
     );
 
