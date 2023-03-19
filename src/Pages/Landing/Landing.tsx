@@ -4,6 +4,7 @@ import { StyleContext } from '../../Store/ThemeContext';
 import LinkTree from '../../Components/UI/PageResources/LinkTree/LinkTree';
 
 import styles from './Landing.module.css';
+import AutoSweeper from '../../Components/UI/PageResources/AutoSolvingMS/AutoSweeper';
 
 function Landing() {
     const styleCTX = useContext(StyleContext);
@@ -16,9 +17,10 @@ function Landing() {
                     <h2 style={styleCTX.theme.logoText1} className={styles.tagLineText} >With Algorithm's</h2>
                 </div>
                 <div className={styles.optionsTreeContainer}>
-                    <h2 style={styleCTX.theme.logoText1} className={styles.algoTextHeader} >Algorithms:</h2>
+                    <h2 style={styleCTX.theme.logoText1} className={styles.algoTextHeader} >Featured Algo's:</h2>
                     <LinkTree />
                 </div>
+                <AutoSweeper />
             </div>
         </div>
     );

@@ -247,7 +247,7 @@ const surroundingCells = (board: any[][], x: number, y: number) => {
     return theseCells;
 };
 
-const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoard: any[][]) => void) => {
+const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoard: any[][]) => void, repeatCall?: () => void) => {
     const user = userBoard.concat([])
     let solving = true;
     let unmodified = true;
@@ -329,13 +329,21 @@ const solve = async (userBoard: any[][], game: number[][], setUserBoard: (newBoa
         }
     }
     if(unmodified){
-        doRandomClick = true;
+        if(doRandomClick){
+            break;
+        }
         if(won){
             break;
         }
+        doRandomClick = true;
     }
 }
     setUserBoard(user);
+    if(repeatCall){
+        setTimeout(() => {
+            repeatCall();
+        }, 400);
+    }
 };
 
 export const msGame = {
