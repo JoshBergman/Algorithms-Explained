@@ -1,4 +1,3 @@
-
 /*
 TYPESCRIPT MINESWEEPER
 REPRESENTED AS AN ARRAY FOR USE IN REACT
@@ -8,14 +7,14 @@ REPRESENTED AS AN ARRAY FOR USE IN REACT
     // 'U' Unknown cell
     // '0' Empty cell
     // '1-8' Quantity of mines nearby
-
-import { sleep } from "../../../../Components/Helpers/Sleep";
+    // 'M' Mine //only on lose
+    // 'W' Clicked Mine //causes lose
 
     // Game Board
     // '0' No mine
-    // '1' Mine
-// /key
+    // '1' Mine 
 
+import { sleep } from "../../../../Components/Helpers/Sleep";
 const height = 10;
 const width = 11;
 
@@ -50,6 +49,36 @@ const checkInboundCell = (x: number, y: number) => {
         return true;
     }
     return false;
+};
+
+const getBorderCoords = () => {
+    const coords = [
+        [-1, 0], //left
+        [1, 0], //right
+        [0, 1], //top
+        [0, -1], //bottom
+        [-1, 1], //topLeft
+        [1, 1], //topRight
+        [1, -1], //bottomRight
+        [-1, -1] //bottomLeft
+    ]
+
+    return coords;
+}
+
+const getBoundariesAndCoords = (x: number, y: number) => {
+    const surrounding = checkBoundary(x, y, 1);
+    const possibleSyntax = [
+        [surrounding.left, -1, 0],
+        [surrounding.right, 1, 0],
+        [surrounding.top, 0, 1],
+        [surrounding.bottom, 0, -1],
+        [surrounding.topLeft, -1, 1],
+        [surrounding.topRight, 1, 1],
+        [surrounding.bottomRight, 1, -1],
+        [surrounding.bottomLeft, -1, -1]
+     ];
+     return possibleSyntax;
 };
 
 
@@ -112,32 +141,17 @@ const rightClick = (user: any[][], x: number, y: number) => {
 };
 
 const mineCount = (board: number[][], x: number, y: number) => {
-    const surrounding = checkBoundary(x, y, 1);
+    const possibleSyntax = getBoundariesAndCoords(x, y);
     let totalMines = 0;
 
-    if(surrounding.left){
-        totalMines += board[x-1][y];
-    }
-    if(surrounding.topLeft){
-        totalMines += board[x-1][y+1];
-    }
-    if(surrounding.top){
-        totalMines += board[x][y+1];
-    }
-    if(surrounding.topRight){
-        totalMines += board[x+1][y+1];
-    }
-    if(surrounding.right){
-        totalMines += board[x+1][y];
-    }
-    if(surrounding.bottomRight){
-        totalMines += board[x+1][y-1];
-    }
-    if(surrounding.bottom){
-        totalMines += board[x][y-1];
-    }
-    if(surrounding.bottomLeft){
-        totalMines += board[x-1][y-1];
+    for(let i = 0; i < possibleSyntax.length; i++){
+        const validDirection: boolean = possibleSyntax[i][0] as boolean;
+        const thisX: number = x + (possibleSyntax[i][1] as number);
+        const thisY: number = y + (possibleSyntax[i][2] as number);
+
+        if(validDirection){
+            totalMines += board[thisX][thisY]
+        }
     }
     
     return totalMines;
@@ -159,49 +173,31 @@ const regionClear = (game: number[][], user: any[][], x: number, y: number) => {
                 regionClear(game, user, newX, newY);
             }
         };
-        
-        clearNext(game, user, -1, 0); //left
-        clearNext(game, user, -1, 1); //top left
-        clearNext(game, user, 0, 1); //top
-        clearNext(game, user, 1, 1); //top right
-        clearNext(game, user, 1, 0); //right
-        clearNext(game, user, 1, -1); //bottom right
-        clearNext(game, user, 0, -1) //bottom
-        clearNext(game, user, -1, -1) //bottom left
+
+        const coords = getBorderCoords();
+        for(let i = 0; i < coords.length; i++){
+            clearNext(game, user, coords[i][0], coords[i][1])
+        }
     }
 };
 
 const popCellsByZero = (game: number[][], user: any[][]) => {
     for(let i = 0; i < user.length; i++){
-        for(let j = 0; j < user[0].length; j++){
-            const surrounding = checkBoundary(i, j, 1);
+    for(let j = 0; j < user[0].length; j++){
 
-            if(surrounding.left && user[i-1][j] === 0){
+        const border = getBoundariesAndCoords(i, j);
+        for(let b = 0; b < border.length; b++){
+            const validDirection = border[b][0];
+            const thisX = i + (border[b][1] as number);
+            const thisY = j + (border[b][2] as number);
+
+            if(validDirection && user[thisX][thisY] === 0){
                 leftClick(game, user, i, j);
-            }
-            else if(surrounding.topLeft && user[i-1][j+1] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.top && user[i][j+1] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.topRight && user[i+1][j+1] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.right && user[i+1][j] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.bottomRight && user[i+1][j-1] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.bottom && user[i][j-1] === 0){
-                leftClick(game, user, i, j);
-            }
-            else if(surrounding.bottomLeft && user[i-1][j-1] === 0){
-                leftClick(game, user, i, j);
+                b = border.length;
             }
         }
-    }
+        
+    }}
 }
 
 const getDefaultBoard = () => {
@@ -227,23 +223,22 @@ const showMinesOnLoss = (game: number[][], user: any[][]) => {
 }
 
 const surroundingCells = (board: any[][], x: number, y: number) => {
+    //returns array of content in surroundingcells and their coords
     const theseCells: any[][] = [];
-    const surrounding = checkBoundary(x, y, 1);
 
     const directionCheck = (direction: boolean, x: number, y: number) => {
         if(direction){
             theseCells.push([board[x][y], x, y]);
         }
     };
-    directionCheck(surrounding.top, x, y+1);
-    directionCheck(surrounding.left, x-1, y);
-    directionCheck(surrounding.right, x+1, y);
-    directionCheck(surrounding.bottom, x, y-1);
-    directionCheck(surrounding.topLeft, x-1, y+1);
-    directionCheck(surrounding.topRight, x+1, y+1);
-    directionCheck(surrounding.bottomLeft, x-1, y-1);
-    directionCheck(surrounding.bottomRight, x+1, y-1);
+    const border = getBoundariesAndCoords(x, y);
+    for(let i = 0; i < border.length; i++){
+        const validDirection: boolean = border[i][0] as boolean;
+        const thisX = x + (border[i][1] as number);
+        const thisY = y + (border[i][2] as number);
 
+        directionCheck(validDirection, thisX, thisY);
+    }
     return theseCells;
 };
 
