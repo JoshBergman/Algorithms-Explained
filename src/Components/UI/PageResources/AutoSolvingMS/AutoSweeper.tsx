@@ -28,7 +28,6 @@ export default function AutoSweeper() {
       firstClick();
       setStarted(true);
     }
-    console.log("Effect running")
   }, [started, firstClick]);
 
   const msActions = {

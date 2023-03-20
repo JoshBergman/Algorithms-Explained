@@ -12,15 +12,15 @@ function Landing() {
     return (
         <div className={styles.pageContainer}>
             <div className={styles.contentAlignmentContainer}>
-                <div className={styles.tagLineTextContainer}>
-                    <h2 style={styleCTX.theme.logoText1} className={styles.tagLineText} >Learn, Visualize, And Interact</h2>
-                    <h2 style={styleCTX.theme.logoText1} className={styles.tagLineText} >With Algorithm's</h2>
+                <div>
+                    <h2 style={styleCTX.theme.logoText1} className={styles.tagLineText} >Discover and Learn</h2>
+                    <h2 style={styleCTX.theme.logoText1} className={styles.tagLineText} >With Visualized Algorithm's</h2>
                 </div>
-                <div className={styles.optionsTreeContainer}>
                     <h2 style={styleCTX.theme.logoText1} className={styles.algoTextHeader} >Featured Algo's:</h2>
+                <div className={styles.treeAndSweep}>
+                    <AutoSweeper />
                     <LinkTree />
                 </div>
-                <AutoSweeper />
             </div>
         </div>
     );

@@ -45,27 +45,28 @@ export default function Speedometer({currSpeed, setSpeed}: ISpeedoProps) {
                 <BiLeftArrow style={styleCTX.text1} />
             </button>
             {
-            speeds.map((speedBar) => {
-                let thisBarStyle = {
-                    backgroundColor: styleCTX.mutedLogoText1.color,
-                    borderColor: styleCTX.text1.color
-                };
-                if(isDark){
-                    thisBarStyle = {
-                        ...thisBarStyle, ...darkStyles
+                speeds.map((speedBar) => {
+                    let thisBarStyle = {
+                        backgroundColor: styleCTX.mutedLogoText1.color,
+                        borderColor: styleCTX.text1.color
                     };
+                    if(isDark){
+                        thisBarStyle = {
+                            ...thisBarStyle, ...darkStyles
+                        };
+                    }
+                    if(currSpeed <= speedBar){
+                        thisBarStyle.backgroundColor = styleCTX.logoText1.color;
+                    }
+                    return (
+                        <div key={speedBar} className={styles.speedBar} style={thisBarStyle} />
+                        );
+                    })
                 }
-                if(currSpeed <= speedBar){
-                    thisBarStyle.backgroundColor = styleCTX.logoText1.color;
-                }
-                return (
-                    <div key={speedBar} className={styles.speedBar} style={thisBarStyle} />
-                );
-            })
-            }
             <button onClick={nextSpeed} className={styles.btn}>
                 <BiRightArrow style={styleCTX.text1} />
             </button>
+                <label className={styles.label} style={styleCTX.mutedLogoText1}>Adjust Speed</label>
         </div>
     </div>
   );
