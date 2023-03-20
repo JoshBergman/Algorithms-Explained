@@ -1,15 +1,14 @@
 .button {
     width: fit-content;
-    padding: 8px;
+    padding: 0.5em;
     font-weight: bold;
     font-size: small;
 
-    border-radius: 5px;
-    border: 1px solid;
-    margin: 10px;
+    border-radius: 0.3125em;
+    border: 0.125em solid;
     transition: all 0.2s ease-in-out;
 }
 
-.button:hover {
-    transform: translate(2px, 2px);
-}
+/*.button:hover {
+    transform: translate(0.125em, 0125em);
+}*/

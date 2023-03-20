@@ -1,28 +1,28 @@
 .mainContainer {
-    height: fit-content;
-    width: fit-content;
     display: inline-block;
 }
 
+/*can not set height to 1.5 em, when doing so it scales diffrenly form normal*/
 .btn {
-    transition: all 0.1s ease-in-out;
+    /*transition: all 0.1s ease-in-out;*/
     font-size: x-large;
     border: 0 solid transparent;
     background-color: transparent;
-    transform: translateX(-10px);
+    padding: 0em;
+    /*transform: translateX(-0.625em);*/
 }
 
-.btn:nth-child(1){
-    transform: translateX(10px);
+/*.btn:nth-child(1){
+    transform: translateX(0.625em);
 }
 
 .btn:hover {
-    transform: translateX(-8px);
+    transform: translateX(-0.5em);
 }
 
 .btn:nth-child(1):hover{
-    transform: translateX(8px);
-}
+    transform: translateX(0.5em);
+}*/
 
 .currSpeedContainer {
     display: flex;
@@ -31,11 +31,12 @@
 }
 
 .speedBar {
-    height: 16px;
-    width: 8px;
-    margin: 1px;
+    height: 1.5em;
+    width: 0.5em;
+    margin: 0.125em;
+/*    margin: 1px;
     margin-top: 2px;
 
     border: 2px solid;
-    padding: 1px;
+    padding: 1px;*/
 }

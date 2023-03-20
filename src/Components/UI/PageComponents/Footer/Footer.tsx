@@ -14,11 +14,12 @@ export default function Footer() {
 
     return (
         <div className={styles.footerContainer}>
-            <div className={styles.textContainer}>
-                <h5 className={styles.copy} style={wordStyle}>© 2023 Joshua Bergman, Trent Young</h5>
+            <div className={styles.linkContainer}>
                 <Link to="/" style={wordStyle} className={styles.word}>Home</Link>
                 <Link to="/algorithms" style={wordStyle} className={styles.word}>All Algorithms</Link>
-                <a href="https://joshuabergman.dev" rel="noreferrer" target="_blank" style={wordStyle} className={styles.word}>SiteTest</a>
+            </div>
+            <div>
+                <p className={styles.copy} style={wordStyle}>© 2023 Joshua Bergman, Trent Young</p>
             </div>
         </div>
     );

@@ -4,6 +4,7 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import DescriptionText from '../../../../Components/UI/PageComponents/AlgoPageTemplate/DescriptionText';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -72,53 +73,61 @@ export default function BubbleSort() {
     </React.Fragment>
     );
 
-    const bubbleText = `
-    const bubbleSort = (arr: number[]) => {^
-      for (let i = 0; i < arr.length; i++){^
-        for (let j = 0; j < (arr.length - i - 1); j++){^^
-          if(arr[j] > arr[j+1]){^
-            let temp = arr[j];^
-            arr[j] = arr[j+1];^
-            arr[j+1] = temp;^
-          }
-          }
+    const bubbleText = 
+`const bubbleSort = (arr: number[]) => {
+    for (let i = 0; i < arr.length; i++){
+        for (let j = 0; j < (arr.length - i - 1); j++){
+            if(arr[j] > arr[j+1]){
+                let temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
         }
-    };`
+    }
+};`
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
 
-        <H centered={true}>BubbleSort Overview</H>
-        <P>Bubble sort is a simple sorting algorithm that is used to arrange elements of a list or array in ascending or descending order.
-           It is a straightforward algorithm that compares each element of an array to its adjacent element,
-           and if they are not in the desired order, they are swapped.
-        </P>
+        <DescriptionText>
+            <H>BubbleSort Overview</H>
+            <P>Bubble sort is a simple sorting algorithm that is used to arrange elements of a list or array in ascending or descending order.
+                It is a straightforward algorithm that compares each element of an array to its adjacent element,
+                and if they are not in the desired order, they are swapped.
+            </P>
+        </DescriptionText>
 
-        <H>BubbleSort() Implementation (TS)</H>
-        <CodeSnippet>
-          {bubbleText}
-        </CodeSnippet>
+        <DescriptionText>
+            <H>BubbleSort() Implementation (TS)</H>
+            <CodeSnippet>
+                {bubbleText}
+            </CodeSnippet>
+        </DescriptionText>
 
-        <H>How BubbleSort Works</H>
-        <P>To start, the algorithm looks at the first two items in the list and compares them.
-           If the first item is greater than the second item, they are swapped. Then, the algorithm moves on to the second and third items in the list and compares them.
-            If they are in the wrong order, they are swapped as well. 
-           This process continues, comparing and swapping adjacent items until the end of the list is reached.
-        </P>
-        <P>
-          At this point, the algorithm has completed one pass through the list.
-          However, there may still be items in the wrong order.
-          So, the algorithm starts again at the beginning of the list and repeats the process of comparing and swapping adjacent items until the end of the list is reached.
-           This process is repeated until no more swaps are needed, meaning the list is fully sorted.
-        </P>
+        <DescriptionText>
+            <H>How BubbleSort Works</H>
+            <P>To start, the algorithm looks at the first two items in the list and compares them.
+                If the first item is greater than the second item, they are swapped. Then, the algorithm moves on to the second and third items in the list and compares them.
+                If they are in the wrong order, they are swapped as well.
+                This process continues, comparing and swapping adjacent items until the end of the list is reached.
+               <br/>
+                At this point, the algorithm has completed one pass through the list.
+                However, there may still be items in the wrong order.
+                So, the algorithm starts again at the beginning of the list and repeats the process of comparing and swapping adjacent items until the end of the list is reached.
+                This process is repeated until no more swaps are needed, meaning the list is fully sorted.
+            </P>
+        </DescriptionText>
 
-        <H>Time Complexity: Slow</H>
-        <P>Best: O(n)</P> 
-        <P>Worst: O(n<sup>2</sup>)</P>
-        <P>While bubble sort is easy to understand and implement, it can be quite slow for large lists.
-           This is because it requires many passes through the list, and each pass may only swap a few items at a time.
-           However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
-        </P>
+        <DescriptionText>
+            <H>Time Complexity: Slow</H>
+            <P>Best Case: O(n) <br/>
+                Worst Case: O(n<sup>2</sup>)<br/>
+                While bubble sort is easy to understand and implement, it can be quite slow for large lists.
+                This is because it requires many passes through the list, and each pass may only swap a few items at a time.
+                However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
+            </P>
+        </DescriptionText>
+
 
     </AlgoPageTemplate>
   );

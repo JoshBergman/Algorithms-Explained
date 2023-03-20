@@ -14,7 +14,7 @@ export default function AlgoPageTemplate({algo, children, title, buttonContainer
     const styleCTX = useContext(StyleContext).theme;
     
   return (
-    <div className={styles.alignmentContainer}>
+    <div>
         <h1 className={styles.title} style={styleCTX.text1}>{title}</h1>
         <div className={styles.algoContainer} >{algo}</div>
         {buttonContainer &&

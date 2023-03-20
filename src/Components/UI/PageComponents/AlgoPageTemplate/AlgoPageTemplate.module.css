@@ -1,31 +1,27 @@
-.alignmentContainer {
-    width: 40%;
-    height: fit-content;
-    margin: 100px auto;
-}
-
 .algoContainer {
-    width: 100%;
     height: fit-content;
+    max-width: 95%;
+    margin:auto;
 }
 
 .wordsContainer {
-    width: 80%;
-    height: fit-content;
-
-    margin: 0 auto;
-    margin-top: 80px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .title {
     font-size: xx-large;
     text-align: center;
-    margin: 2px;
-    text-decoration: underline;
+    margin: 0.125em;
+   /* text-decoration: underline;*/
 }
 
 .buttonContainer {
-    margin: 0 auto;
-    height: fit-content;
-    width: fit-content;
+    margin: 0.5em auto;
+    height: 2em;
+    width: 16.625em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -1,21 +1,27 @@
 .footerContainer {
     height: fit-content;
     width: fit-content;
-    padding: 20px;
+    padding: 1.125em;
 
-    margin-left: 25%;
+    margin: auto;
+    text-align: center;
 }
 
-.word, .copy {
-    display: inline-block;
-    margin: 10px;
-    padding-right: 10px;
-    margin-right: 0;
-    border-right: 2px solid black;
-
+.word {
     text-decoration: none;
 }
 
 .word:hover {
     text-decoration: underline;
+}
+
+p.copy{
+    display: block;
+    font-size: .83em;
+    font-weight: bold;
+}
+
+.linkContainer {
+    display: flex;
+    justify-content: space-between;
 }
