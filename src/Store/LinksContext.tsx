@@ -38,7 +38,14 @@ export const LinksProvider = ({children}:IProviderProps) => {
 
     const featuredLinks: Links = {
         links: [
-            ...currLinks.links
+            currLinks.links[7],
+            currLinks.links[5],
+            currLinks.links[6],
+            currLinks.links[4],
+            currLinks.links[3],
+            currLinks.links[2],
+            currLinks.links[1],
+            ["See All", "/algorithms", "Nav", ""]
         ]
     }
 

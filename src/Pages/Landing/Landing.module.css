@@ -4,7 +4,7 @@
 }
 
 .contentAlignmentContainer {
-    width: clamp(60%, 40%, 100%);
+    width: clamp(40%, 80vw, 60%);
     height: fit-content;
     margin: 0 auto;
     margin-top: 10%;
