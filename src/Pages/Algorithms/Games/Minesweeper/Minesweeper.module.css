@@ -34,3 +34,7 @@
 .clickedMine {
     background-color: rgba(148, 43, 43, 0.477);
 }
+
+.cell:hover,.cellOther:hover {
+    cursor:pointer;
+}

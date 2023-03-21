@@ -87,7 +87,7 @@ export default function Minesweeper() {
 
 
   //page info -------------------------------------------------------------------
-  const pageTitle = "Minesweeper";
+  const pageTitle = "Minesweeper & Solver";
   const algo = <MinesweeperVisualizer userBoard={userBoard} msActions={msActions}/>
   const buttons = (
     <React.Fragment>     
@@ -101,52 +101,65 @@ export default function Minesweeper() {
     );
 
     const snippetText = `
-    const bubbleSort = (arr: number[]) => {^
-      for (let i = 0; i < arr.length; i++){^
-        for (let j = 0; j < (arr.length - i - 1); j++){^^
-          if(arr[j] > arr[j+1]){^
-            let temp = arr[j];^
-            arr[j] = arr[j+1];^
-            arr[j+1] = temp;^
-          }
-          }
-        }
-    };`
+    (Code shown is pseudo-code and will not run)^
+    ^
+    ^
+      while(solvingGame){^
+        goToNextCell();^
+        ^
+        if(thisCell > 0 && thisCell < 9){^
+          if(thisCell - nearbyFlags === unknownCells){^
+            flagAllNeighbors();^
+          }^
+          else if (thisCell === nearbyFlags){^
+            popAllUknownCellsNearby();^
+          }^
+          else if (noLegalMoves){^
+            clickRandomUnkownCell();^
+          }^
+        }^
+      }^
+    `
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
 
-        <H centered={true}>BubbleSort Overview</H>
-        <P>Bubble sort is a simple sorting algorithm that is used to arrange elements of a list or array in ascending or descending order.
-           It is a straightforward algorithm that compares each element of an array to its adjacent element,
-           and if they are not in the desired order, they are swapped.
+        <H centered={true}>Minesweeper Overview</H>
+        <P>
+          Minesweeper is a popular computer game that has been around for several decades. 
+          The game was first developed in the 1960s by a mainframe programmer named Curt Johnson, who created a version of the game called "Cube." 
+          However, it wasn't until the 1980s, when personal computers became more widely available, that the game gained widespread popularity. 
+          The first version of Minesweeper as we know it today was included as part of the Microsoft Entertainment Pack for Windows 3.1 in 1990. 
+          The game quickly became a favorite among Windows users and was included as a default game in all subsequent versions of Windows until Windows 8, when it was removed in favor of other games. Despite its simplicity, Minesweeper has proven to be a challenging and addictive game that has stood the test of time. 
+          Today, it continues to be available as a standalone game on various platforms and is a favorite among casual gamers around the world.
         </P>
 
-        <H>BubbleSort() Implementation (TS)</H>
+        <H centered={true}>How To Play</H>
+        <P>
+          Minesweeper is a logic-based computer game that is easy to learn but can be challenging to master. 
+          The goal of the game is to uncover all the squares on a grid without detonating any hidden mines. 
+          To start, you will see a grid of squares, some of which may contain mines. 
+          Your task is to click on a square to reveal what's underneath it. 
+          If the square contains a mine, the game is over, and you lose. 
+          However, if the square is safe, it will reveal a number indicating how many mines are adjacent to that square. 
+          Based on the numbers revealed, you can deduce which squares are safe to click and which ones contain mines. 
+          To flag a square that you think contains a mine, right-click on it to place a flag. 
+          The game is won when all the safe squares have been revealed, and all the mines have been flagged. 
+        </P>
+
+        <H>How THIS Minesweeper Solver Works</H>
+        <P>
+          The visualized implementation of a minesweeper solver is by no means the best, but it is lightweight enough to work in a browser.
+          The core functionality of the solver is to repeat these steps for each cell:
+          1. Flag any mines that have a 100% chance to be a mine.
+          2. If the amount of nearby flags is equal to the amount of nearby mines, click each unflagged cell.
+          3. If no legal or safe moves can be played, click a surrounding unknown cell at random.
+        </P>
+
+        <H>Pseudo Code For This Implementation</H>
         <CodeSnippet>
           {snippetText}
         </CodeSnippet>
-
-        <H>How BubbleSort Works</H>
-        <P>To start, the algorithm looks at the first two items in the list and compares them.
-           If the first item is greater than the second item, they are swapped. Then, the algorithm moves on to the second and third items in the list and compares them.
-            If they are in the wrong order, they are swapped as well. 
-           This process continues, comparing and swapping adjacent items until the end of the list is reached.
-        </P>
-        <P>
-          At this point, the algorithm has completed one pass through the list.
-          However, there may still be items in the wrong order.
-          So, the algorithm starts again at the beginning of the list and repeats the process of comparing and swapping adjacent items until the end of the list is reached.
-           This process is repeated until no more swaps are needed, meaning the list is fully sorted.
-        </P>
-
-        <H>Time Complexity: Slow</H>
-        <P>Best: O(n)</P> 
-        <P>Worst: O(n<sup>2</sup>)</P>
-        <P>While bubble sort is easy to understand and implement, it can be quite slow for large lists.
-           This is because it requires many passes through the list, and each pass may only swap a few items at a time.
-           However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
-        </P>
 
     </AlgoPageTemplate>
   );
