@@ -38,8 +38,12 @@ export default function Speedometer({currSpeed, setSpeed}: ISpeedoProps) {
         padding: "2px"
     }
 
+    const borderClr = {
+        borderColor: styleCTX.text1.color
+    };
+
   return (
-    <div className={styles.mainContainer}>
+    <div className={styles.mainContainer} style={borderClr}>
         <div className={styles.currSpeedContainer}>
             <button onClick={prevSpeed} className={styles.btn}>
                 <BiLeftArrow style={styleCTX.text1} />

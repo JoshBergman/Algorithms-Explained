@@ -1,5 +1,5 @@
 .alignmentContainer {
-    width: 40%;
+    width: clamp(270px, 800px, 95%);
     height: fit-content;
     margin: 100px auto;
 }

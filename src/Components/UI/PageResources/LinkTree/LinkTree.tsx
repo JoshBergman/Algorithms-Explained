@@ -10,7 +10,11 @@ export default function LinkTree() {
     const links = useContext(LinksContext).featuredLinks.links;
 
     const themeBorder = {
-        "borderColor": styleCTX.theme.mutedLogoBackground1.backgroundColor
+        "borderColor": styleCTX.theme.text1.color
+    };
+
+    const backgroundColorStyle = {
+        "backgroundColor": styleCTX.theme.text1.color
     };
 
   return (
@@ -18,11 +22,11 @@ export default function LinkTree() {
         {links.map((link) => {return (
                 <div key={link[0]} className={styles.singleLinkContainer}>
                     <div className={styles.textContainer}>
-                    <Link to={link[1]} style={styleCTX.theme.mutedLogoText1} className={styles.linkText} >
+                    <Link to={link[1]} style={styleCTX.theme.text1} className={styles.linkText} >
                         {link[0]}
                     </Link>
                     </div>
-                    <div className={styles.connectingLine} style={styleCTX.theme.mutedLogoBackground1} />
+                    <div className={styles.connectingLine} style={backgroundColorStyle} />
                 </div>
             );
         })}

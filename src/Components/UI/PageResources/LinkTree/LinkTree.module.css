@@ -4,7 +4,7 @@
 
     border-right: 3px solid;
 
-    width: 40%;
+    width: clamp(200px, 40%, 300px);
 }
 
 .singleLinkContainer {
@@ -49,4 +49,13 @@
 
 .linkText:hover {
     text-decoration: underline;
+}
+
+@media (max-width: 900px){
+    .linkText {
+        font-size: 18px;
+    }
+    .singleLinkContainer {
+        height: 35px;
+    }
 }

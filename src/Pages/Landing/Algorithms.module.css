@@ -7,10 +7,10 @@
 }
 
 .linksContainer {
-    height: fit-content;
-    min-height: 100vh;;
-    width: 500px;
+    height: clamp(60vh, fit-content, 100vh);
+    width: clamp(240px, 65%, 460px);
     margin: 0 auto;
+    margin-bottom: 130px;
 }
 
 .singleLinkContainer {
@@ -19,7 +19,7 @@
 
     border-bottom: 2px solid;
     padding: 8px;
-    font-size: 24px;
+    font-size: 22px;
     text-overflow: ellipsis;
     overflow: hidden;
 }

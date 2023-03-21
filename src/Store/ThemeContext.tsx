@@ -6,7 +6,7 @@ import { DarkPalette } from './ThemeData/DarkPalette';
 
 //defining types and creating the context
 export const StyleContext = React.createContext({
-    isDark: false,
+    isDark: true,
     toggleDark: () => {},
     theme: LightPalette
 });
@@ -24,12 +24,14 @@ interface ITheme {
 }
 
 export const StyleProvider = ({children}:IProviderProps) => {
-    const [isDark, setIsDark] = useState(false);
+    const [isDark, setIsDark] = useState(true);
 
     //if local storage has key "ISDARK" set to "true" => isDark is set to true
     useEffect(() => {
         const storageDark = localStorage.getItem("ISDARK");
-        if (storageDark === "true"){
+        if (storageDark === "false"){
+            setIsDark(false);
+        } else {
             setIsDark(true);
         }
     }, []);

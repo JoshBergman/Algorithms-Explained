@@ -3,11 +3,15 @@
     height: 80vh;
 }
 
+.headerContainer {
+    margin-top: 10vh;
+}
+
 .contentAlignmentContainer {
-    width: clamp(40%, 80vw, 60%);
+    width: clamp(40%, 800px, 80%);
     height: fit-content;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 3%;
 }
 
 .tagLineText {
@@ -29,4 +33,28 @@
     margin-top: 80px;
     font-size: 35px;
     text-decoration: underline;
+}
+
+.ms {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    margin-top: -50px;
+}
+.ms:hover {
+    transform: translate(3px, 3px);
+    text-decoration: underline;
+}
+
+@media (max-width: 900px){
+    .pageContainer{
+        height: clamp(560px, 69vh, 200vh);
+    }
+    .contentAlignmentContainer {
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+    .tagLineText, .algoTextHeader {
+        font-size: 26px;
+    }
 }

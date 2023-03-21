@@ -44,3 +44,22 @@
     font-weight: bold;
     font-style: italic;
 }
+
+@media (max-width: 470px){
+    .mainContainer{
+        display: block;
+        margin-top: 5px;
+        padding-top: 5px;
+        border-top: 2px solid white;
+    }
+
+    .currSpeedContainer {
+        width: clamp(290px, fit-content, 100%);
+        margin: 0;
+    }
+    .label {
+        font-size: clamp(10px, 5vw, 100%);
+        margin: 0;
+        display: block;
+    }
+}

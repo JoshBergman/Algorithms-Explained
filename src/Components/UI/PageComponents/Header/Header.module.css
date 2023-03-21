@@ -46,3 +46,18 @@
 .link:hover {
     text-decoration: underline;
 }
+
+@media(max-width: 900px){
+    .alignmentContainer {
+        width: clamp(280px, 70%, 400px);
+    }
+    
+    .linksContainer {
+        width: 100%;
+    }
+
+    .logo,
+    .link {
+        font-size: 18px;
+    }
+}

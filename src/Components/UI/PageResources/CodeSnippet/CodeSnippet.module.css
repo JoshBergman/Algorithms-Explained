@@ -35,3 +35,9 @@
 .pseudoBtn:nth-child(3) {
     background-color: rgb(36, 175, 36);
 }
+
+@media(max-width: 300px){
+    .snippetContainer {
+        overflow-x: scroll;
+    }
+}

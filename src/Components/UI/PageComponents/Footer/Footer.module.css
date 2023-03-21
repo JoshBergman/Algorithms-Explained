@@ -3,7 +3,8 @@
     width: fit-content;
     padding: 20px;
 
-    margin-left: 25%;
+    margin: 0 auto;
+    opacity: 75%;
 }
 
 .word, .copy {
@@ -16,6 +17,24 @@
     text-decoration: none;
 }
 
+.copy {
+    font-size: 14px;
+}
+
 .word:hover {
     text-decoration: underline;
+}
+
+@media(max-width: 500px){
+    .word, .copy {
+        text-align: center;
+    }
+    .word:nth-child(2){
+        border: none;
+    }
+    .copy {
+        border: none;
+        font-size: 12px;
+        display: block;
+    }
 }
