@@ -1,0 +1,70 @@
+.barContainer {
+  height: 70px;
+  width: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: nowrap;
+
+  margin: auto;
+  margin-top: 25%;
+  margin-bottom: 25%;
+}
+
+.medBar,
+.largeBar,
+.smallBar {
+  width: 20px;
+}
+
+.smallBar {
+  background-color: #2ecc71;
+  height: 30px;
+}
+
+.medBar {
+  background-color: #36ae68;
+  height: 40px;
+}
+
+.largeBar {
+  background-color: #22df71;
+  height: 50px;
+}
+.smallBar::before,
+.medBar::before,
+.largeBar::before {
+  position: absolute;
+  content: "";
+  background-color: inherit;
+  height: inherit;
+  width: inherit;
+
+  animation-name: wigglingBars;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  transition: all 1s ease-in-out;
+}
+
+.medBar::before {
+  height: 20px;
+  animation-delay: 1s;
+}
+
+.largeBar::before {
+  height: 10px;
+  animation-delay: 2s;
+}
+
+@keyframes wigglingBars {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
