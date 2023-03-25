@@ -101,35 +101,34 @@ export default function QuickSort() {
     </React.Fragment>
     );
 
-    const bubbleText = `
-  const quickSort = (sortArray: number[]): number[] => {^
-    const arr = sortArray.concat([]);^
-    if (arr.length <= 1) {^
-        return arr;^
-    } else {^
-        let left = [];^
-        let right = [];^
-        let storage: number[] = [];^
-        ^
-        let pivot = arr.pop()!  // .pop()"!" sets return type of .pop() to not include undefined^
-        let len = arr.length;^
-        ^
-        for (let i = 0; i < len; i++) {^
-            if (arr[i] <= pivot) {^
-                left.push(arr[i]);^
-            } else {^
-                right.push(arr[i]);^
-            }^
-        }^
-        ^
-        let sortedLeft = quickSort(left);^
-        let sortedRight = quickSort(right)^
-        let merged = storage.concat(sortedLeft, pivot, sortedRight);^
-        ^
-        return merged;^
-      }^
-  }^
-    `;
+    const bubbleText =
+`const quickSort = (sortArray: number[]): number[] => {
+    const arr = sortArray.concat([]);
+    if (arr.length <= 1) {
+        return arr;
+    } else {
+        let left = [];
+        let right = [];
+        let storage: number[] = [];
+        
+        let pivot = arr.pop()!  // .pop()"!" sets return type of .pop() to not include undefined
+        let len = arr.length;
+        
+        for (let i = 0; i < len; i++) {
+            if (arr[i] <= pivot) {
+                left.push(arr[i]);
+            } else {
+                right.push(arr[i]);
+            }
+        }
+        
+        let sortedLeft = quickSort(left);
+        let sortedRight = quickSort(right)
+        let merged = storage.concat(sortedLeft, pivot, sortedRight);
+        
+        return merged;
+    }
+}`;
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

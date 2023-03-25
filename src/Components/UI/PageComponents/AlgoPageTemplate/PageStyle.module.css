@@ -6,15 +6,12 @@
     font-weight: 400;
 }
 
-.h, .hc {
+.h{
     text-align: left;
     font-size: 20px;
 
     margin: 40px 0 10px 0;
     margin-top: 80px;
-}
-
-.hc {
     text-align: center;
 }
 

@@ -92,29 +92,28 @@ export default function Array() {
     </React.Fragment>
     );
 
-    const algoText = `
-    const insertionSort = (sortArray:number[]): number[] => {^
-      const arr = sortArray.concat([]);^
-      let prevItemIndex: number, tempIndex: number;^
-      ^
-      for(let i = 1; i < arr.length; i++){^
-          tempIndex = i;^
-          prevItemIndex = i - 1;^
-      ^
-          while(prevItemIndex >= 0 && arr[tempIndex] < arr[prevItemIndex]){^
-              //swaps values descending until sorted^
-              const swapTemp = arr[prevItemIndex];^
-              arr[prevItemIndex] = arr[tempIndex];^
-              arr[tempIndex] = swapTemp;^
-      ^
-              //decrements^
-              tempIndex = tempIndex - 1;^
-              prevItemIndex = prevItemIndex - 1;^
-          }^
-      }^
-      return arr;^
-  };^
-  `
+    const algoText = 
+`const insertionSort = (sortArray:number[]): number[] => {
+    const arr = sortArray.concat([]);
+    let prevItemIndex: number, tempIndex: number;
+
+    for(let i = 1; i < arr.length; i++){
+        tempIndex = i;
+        prevItemIndex = i - 1;
+
+        while(prevItemIndex >= 0 && arr[tempIndex] < arr[prevItemIndex]){
+            //swaps values descending until sorted
+            const swapTemp = arr[prevItemIndex];
+            arr[prevItemIndex] = arr[tempIndex];
+            arr[tempIndex] = swapTemp;
+
+            //decrements
+            tempIndex = tempIndex - 1;
+            prevItemIndex = prevItemIndex - 1;
+        }
+    }
+    return arr;
+};`
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

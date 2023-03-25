@@ -100,26 +100,26 @@ export default function Minesweeper() {
     </React.Fragment>
     );
 
-    const snippetText = `
-    (Code shown is pseudo-code and will not run)^
-    ^
-    ^
-      while(solvingGame){^
-        goToNextCell();^
-        ^
-        if(thisCell > 0 && thisCell < 9){^
-          if(thisCell - nearbyFlags === unknownCells){^
-            flagAllNeighbors();^
-          }^
-          else if (thisCell === nearbyFlags){^
-            popAllUknownCellsNearby();^
-          }^
-          else if (noLegalMoves){^
-            clickRandomUnkownCell();^
-          }^
-        }^
-      }^
-    `
+    const snippetText = 
+`(Code shown is pseudo-code and will not run)
+
+
+while(solvingGame){
+    goToNextCell();
+
+    if(thisCell > 0 && thisCell < 9){
+        if(thisCell - nearbyFlags === unknownCells){
+            flagAllNeighbors();
+        }
+        else if (thisCell === nearbyFlags){
+            popAllUknownCellsNearby();
+        }
+        else if (noLegalMoves){
+            clickRandomUnkownCell();
+        }
+    }
+}
+`
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

@@ -86,32 +86,32 @@ export default function SelectionSort() {
     </React.Fragment>
     );
 
-    const algoText = `
-    const selectionSort = (sortArray:number[]) => {^
-      const arr = sortArray.concat([]);^
-      const swap = (pos1: number, pos2: number) => {^
-          let temp = arr[pos1];^
-          arr[pos1] = arr[pos2];^
-          arr[pos2] = temp;^
-      };^
-      ^
-      for(let i = 0; i < arr.length; i++){^
-          let currSmallestIndex = i;^
-      ^   
-          //finds current smallest item^
-          for(let j = i; j < arr.length; j++){^
-              if(arr[j] < arr[currSmallestIndex]){^
-                  currSmallestIndex = j;^
-              }^
-          }^
-          //if smallest item is smaller than current item then swap^
-          if(arr[currSmallestIndex] < arr[i]){^
-              swap(i, currSmallestIndex);^
-          }^
-      }^
-      return arr;^
-  };^
-  `
+    const algoText = 
+`const selectionSort = (sortArray:number[]) => {
+    const arr = sortArray.concat([]);
+    const swap = (pos1: number, pos2: number) => {
+        let temp = arr[pos1];
+        arr[pos1] = arr[pos2];
+        arr[pos2] = temp;
+    };
+    
+    for(let i = 0; i < arr.length; i++){
+        let currSmallestIndex = i;
+    
+        //finds current smallest item
+        for(let j = i; j < arr.length; j++){
+            if(arr[j] < arr[currSmallestIndex]){
+                currSmallestIndex = j;
+            }
+        }
+        //if smallest item is smaller than current item then swap
+        if(arr[currSmallestIndex] < arr[i]){
+            swap(i, currSmallestIndex);
+        }
+    }
+    return arr;
+};
+`
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

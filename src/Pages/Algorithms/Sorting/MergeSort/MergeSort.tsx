@@ -100,38 +100,37 @@ export default function Array() {
     </React.Fragment>
     );
 
-    const bubbleText = `
-    const mergeSort = (arr: number[]): number[] => {^
-      if (arr.length <= 1) {^
-        return arr;^
-      }^
-    ^
-      const mid = Math.floor(arr.length / 2);^
-      const left = arr.slice(0, mid);^
-      const right = arr.slice(mid);^
-      ^
-      return merge(mergeSort(left), mergeSort(right));^
-    }^
-    ^
-    const merge = (left: number[], right: number[]) => {^
-      let resultArray = [], leftIndex = 0, rightIndex = 0;^
-    ^
-      while (leftIndex < left.length && rightIndex < right.length) {^
-        if (left[leftIndex] < right[rightIndex]) {^
-          resultArray.push(left[leftIndex]);^
-          leftIndex++;^
-        } else {^
-          resultArray.push(right[rightIndex]);^
-          rightIndex++;^
-        }^
-      }^
-      const leftSide = left.slice(leftIndex);^
-      const rightSide = right.slice(rightIndex);^
-      const returnArray = resultArray.concat(leftSide.concat(rightSide));^
-  ^
-      return returnArray;^
-    };^
-    `
+    const bubbleText = 
+`const mergeSort = (arr: number[]): number[] => {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    
+    const mid = Math.floor(arr.length / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+      
+    return merge(mergeSort(left), mergeSort(right));
+}
+    
+const merge = (left: number[], right: number[]) => {
+    let resultArray = [], leftIndex = 0, rightIndex = 0;
+    
+    while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+            resultArray.push(left[leftIndex]);
+            leftIndex++;
+        } else {
+            resultArray.push(right[rightIndex]);
+            rightIndex++;
+        }
+    }
+    const leftSide = left.slice(leftIndex);
+    const rightSide = right.slice(rightIndex);
+    const returnArray = resultArray.concat(leftSide.concat(rightSide));
+  
+    return returnArray;
+};`
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>

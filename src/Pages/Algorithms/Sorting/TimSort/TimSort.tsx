@@ -139,81 +139,78 @@ export default function TimSort() {
     </React.Fragment>
     );
 
-    const algoText = `  
-      const timSort = (sortArray: number[]) => {^
-      const RUN = 10    // normaly this would be 64 but that is very large for our data set^
-      const len = sortArray.length;^
-      for (let i = 0; i < len; i += RUN) {^
-          insertionSort(sortArray, i, Math.min(i + RUN - 1, len - 1));^
-      }^
-      // merge blocks together^
-      for (let size = RUN; size < len; size *= 2) {^
-          for (let left = 0; left < len; left += 2 * size) {^
-              const mid = left + size - 1;^
-              const right = Math.min(left + 2 * size - 1, len - 1);^
-              merge(sortArray, left, mid, right);^
-          }^
-      }^
-      return sortArray;^
-  }^
-  `;
+    const algoText = 
+`const timSort = (sortArray: number[]) => { 
+    const RUN = 10    // normaly this would be 64 but that is very large for our data set 
+    const len = sortArray.length; 
+    for (let i = 0; i < len; i += RUN) { 
+        insertionSort(sortArray, i, Math.min(i + RUN - 1, len - 1)); 
+    } 
+    // merge blocks together 
+    for (let size = RUN; size < len; size *= 2) { 
+        for (let left = 0; left < len; left += 2 * size) { 
+            const mid = left + size - 1; 
+            const right = Math.min(left + 2 * size - 1, len - 1); 
+            merge(sortArray, left, mid, right); 
+        } 
+    } 
+    return sortArray; 
+}`;
 
-  const insertText = `
-  // inplace insertion sort^
-  // replace left with 0 and right with length-1 for normal insertion sort^^
-  const insertionSort = (sortArray: number[], left: number, right: number) => {^
-    for (let i = left + 1; i <= right; i++) {^
-        const pivot = sortArray[i];^
-        let j = i - 1;^
-        while (j >= left && sortArray[j] > pivot) {^
-            //swaps values descending until sorted^
-            sortArray[j + 1] = sortArray[j];^
-            j--;^
-        }^
-        sortArray[j + 1] = pivot;^
-    }^
-};^
-  `;
+    const insertText = 
+`// inplace insertion sort 
+// replace left with 0 and right with length-1 for normal insertion sort  
+const insertionSort = (sortArray: number[], left: number, right: number) => { 
+    for (let i = left + 1; i <= right; i++) { 
+        const pivot = sortArray[i]; 
+        let j = i - 1; 
+        while (j >= left && sortArray[j] > pivot) { 
+            //swaps values descending until sorted 
+            sortArray[j + 1] = sortArray[j]; 
+            j--; 
+        } 
+        sortArray[j + 1] = pivot; 
+    } 
+};`;
 
-  const mergeText = `  
-  // Merging two array sections logic^
-  const merge = (MergeArray: number[],leftIndex: number, middleIndex:number, rightIndex: number) => {^
-      if (middleIndex >= rightIndex) {^
-          return;^
-      }^
-      const leftLen = middleIndex - leftIndex + 1;^
-      const RightLen = rightIndex - middleIndex;^
-      const leftArray = [];^
-      const rightArray = [];^
-^
-      // initalize the sides / make the two arrays to merge^
-      for (let i = 0; i < leftLen; i++) {^
-          leftArray[i] = MergeArray[leftIndex + i];^
-      }^
-      for (let i = 0; i < RightLen; i++) {^
-          rightArray[i] = MergeArray[middleIndex + 1 + i];^
-      }^
-^
-      // i,j,k merge logic^
-      let i = 0;^
-      let j = 0;^
-      let k = leftIndex;^
-      while (i < leftArray.length && j < rightArray.length) {^
-          if (leftArray[i] < rightArray[j]) {^
-              MergeArray[k++] = leftArray[i++];^
-          } else {^
-              MergeArray[k++] = rightArray[j++];^
-          }^
-      }^
-      // clean up unequal sizes, may or may not happen depending on run size^
-      while (i < leftArray.length) {^
-          MergeArray[k++] = leftArray[i++];^
-      }^
-      while (j < rightArray.length) {^
-          MergeArray[k++] = rightArray[j++];^
-      }^
-  }^
-  `;
+    const mergeText = 
+`// Merging two array sections logic 
+const merge = (MergeArray: number[],leftIndex: number, middleIndex:number, rightIndex: number) => { 
+    if (middleIndex >= rightIndex) { 
+        return; 
+    } 
+    const leftLen = middleIndex - leftIndex + 1; 
+    const RightLen = rightIndex - middleIndex; 
+    const leftArray = []; 
+    const rightArray = []; 
+ 
+    // initalize the sides / make the two arrays to merge 
+    for (let i = 0; i < leftLen; i++) { 
+        leftArray[i] = MergeArray[leftIndex + i]; 
+    } 
+    for (let i = 0; i < RightLen; i++) { 
+        rightArray[i] = MergeArray[middleIndex + 1 + i]; 
+    } 
+ 
+    // i,j,k merge logic 
+    let i = 0; 
+    let j = 0; 
+    let k = leftIndex; 
+    while (i < leftArray.length && j < rightArray.length) { 
+        if (leftArray[i] < rightArray[j]) { 
+            MergeArray[k++] = leftArray[i++]; 
+        } else { 
+            MergeArray[k++] = rightArray[j++]; 
+        } 
+    } 
+    // clean up unequal sizes, may or may not happen depending on run size 
+    while (i < leftArray.length) { 
+        MergeArray[k++] = leftArray[i++]; 
+    } 
+    while (j < rightArray.length) { 
+        MergeArray[k++] = rightArray[j++]; 
+    } 
+} `;
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
