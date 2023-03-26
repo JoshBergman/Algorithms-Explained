@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -112,13 +114,11 @@ export default function BubbleSort() {
            This process is repeated until no more swaps are needed, meaning the list is fully sorted.
         </P>
 
-        <H>Time Complexity: Slow</H>
-        <P>Best: O(n)</P> 
-        <P>Worst: O(n<sup>2</sup>)</P>
-        <P>While bubble sort is easy to understand and implement, it can be quite slow for large lists.
-           This is because it requires many passes through the list, and each pass may only swap a few items at a time.
-           However, for small lists or lists that are already mostly sorted, bubble sort can be a quick and effective way to sort items.
-        </P>
+        <TCContainer>
+              <TC type={"Best"}>O(n)</TC>
+              <TC type={"Average"}>O(n<sup>2</sup>)</TC>
+              <TC type={"Worse"}>O(n<sup>2</sup>)</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );

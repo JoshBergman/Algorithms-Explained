@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -137,19 +139,11 @@ export default function SelectionSort() {
           If a smaller element is found, the current smallest element is updated to be the new smallest element.
         </P>
 
-        <H>Time Complexity: Slow</H>
-        <P>O(n<sup>2</sup>)</P>
-        <P>The time complexity of selection sort is O(n<sup>2</sup>), where n is the number of elements in the input list. 
-          This means that the time it takes to sort the list increases quadratically with the number of elements in the list. 
-          In the worst-case scenario, where the input list is in reverse order, selection sort will make n<sup>2/2</sup> comparisons and n swaps. 
-        </P>
-          
-        <P>
-          However, unlike some other sorting algorithms, selection sort always makes the same number of comparisons and swaps, regardless of the input. 
-          This predictability makes it useful for teaching beginners about sorting algorithms, but it also makes it less efficient than some other algorithms. 
-          In general, selection sort is best suited for small lists or for lists that are already partially sorted. 
-          For larger or more complex lists, more efficient sorting algorithms, such as merge sort or quicksort, are usually preferred.
-        </P>
+        <TCContainer>
+            <TC type={"Best"}>O(n<sup>2</sup>)</TC>
+            <TC type={"Average"}>O(n<sup>2</sup>)</TC>
+            <TC type={"Worse"}>O(n<sup>2</sup>)</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );

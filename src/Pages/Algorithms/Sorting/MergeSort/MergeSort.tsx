@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -158,17 +160,11 @@ export default function Array() {
         This process is repeated until all the elements have been sorted and merged into the new, sorted list.
         </P>
 
-        <H>Time Complexity: Fast</H>
-        <P>O(n log n)</P> 
-        <P>The time complexity of mergesort is O(n log n), where n is the number of elements in the input list. 
-          This means that the time it takes to sort the list increases logarithmically with the number of elements in the list. 
-          This is a significant improvement over other algorithms with quadratic time complexity, such as insertion sort and selection sort. 
-          The efficiency of mergesort comes from the fact that it splits the list into smaller and smaller sub-lists until each sub-list contains only one element, and then it merges the sub-lists back together while sorting them. 
-          The divide-and-conquer approach of mergesort ensures that the algorithm always takes O(n log n) time to sort the list, regardless of the initial order of the elements. 
-          Additionally, mergesort is a stable sorting algorithm, which means that it preserves the relative order of equal elements in the input list. 
-          This makes it a popular choice for applications where stability is important. 
-          Overall, mergesort is a reliable and widely used sorting algorithm that performs well on large datasets.
-        </P>
+        <TCContainer>
+            <TC type={"Best"}>O(n log(n))</TC>
+            <TC type={"Average"}>O(n log(n))</TC>
+            <TC type={"Worse"}>O(n log(n))</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );

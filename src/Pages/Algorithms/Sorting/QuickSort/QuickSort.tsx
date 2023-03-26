@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -155,15 +157,11 @@ export default function QuickSort() {
           One important aspect of quicksort is the choice of pivot. A good pivot should be chosen such that it partitions the array into two roughly equal sub-arrays. This ensures that the algorithm runs efficiently and avoids worst-case performance scenarios where the partitioning produces highly imbalanced sub-arrays.
         </P>
 
-        <H>Time Complexity: Fast</H>
-        <P>O(n log n)</P> 
-        <P>
-          The time complexity of quicksort is generally O(n log n) on average, making it one of the fastest sorting algorithms in practice. 
-          This is because the algorithm divides the array into smaller sub-arrays and sorts them recursively, effectively reducing the number of comparisons needed to sort the entire array. 
-          However, the worst-case time complexity of quicksort is O(n<sup>2</sup>), which occurs when the partitioning process produces highly imbalanced sub-arrays. In this case, the recursive sorting process becomes less efficient, and the algorithm requires more comparisons to sort the array. 
-          To avoid worst-case performance, various techniques have been developed, such as selecting a good pivot, choosing a randomized pivot, or using hybrid algorithms that switch to a different sorting algorithm for small sub-arrays. 
-          Overall, the time complexity of quicksort is a function of the size of the array and the efficiency of the partitioning process, and can be optimized using various strategies to improve its performance.
-        </P>
+        <TCContainer>
+            <TC type={"Best"}>O(n log(n))</TC>
+            <TC type={"Average"}>O(n log(n))</TC>
+            <TC type={"Worse"}>O(n<sup>2</sup>)</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );

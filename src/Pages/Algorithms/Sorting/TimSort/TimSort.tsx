@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import RefLink from '../../../../Components/UI/PageComponents/AlgoPageTemplate/RefLink';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
@@ -249,13 +251,11 @@ export default function TimSort() {
           {mergeText}
         </CodeSnippet>
 
-        <H>Time Complexity: Very Fast</H>
-        <P>O(n log n)</P> 
-        <P>The time complexity of TimSort is O(n log n) in the worst case scenario, where n is the number of elements in the input list. 
-            This means that the algorithm takes roughly proportional to n times the logarithm of n operations to sort the list. 
-            However, in practice, the time complexity of TimSort is often closer to O(n) for partially ordered or nearly sorted lists, as the algorithm is able to take advantage of any preexisting order in the input list to reduce the number of comparisons and swaps required. 
-            Overall, TimSort is an efficient and effective sorting algorithm that is widely used in many programming languages and applications.
-        </P>
+        <TCContainer>
+            <TC type={"Best"}>O(n)</TC>
+            <TC type={"Average"}>O(n log(n))</TC>
+            <TC type={"Worse"}>O(n log(n)</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );

@@ -30,3 +30,31 @@
 .RefLink:hover {
     text-decoration: none;
 }
+
+/*
+    Time Complexity Area
+*/
+
+.TCContainer{
+    display:flex;
+    justify-content: center
+}
+
+.TCCard{
+    background-color: gray;
+}
+
+.TCHeader {
+
+}
+
+.TCBody{
+
+}
+
+.TCHeader,
+.TCBody {
+    padding: 1em;
+    width: fit-content;
+    margin: auto;
+}

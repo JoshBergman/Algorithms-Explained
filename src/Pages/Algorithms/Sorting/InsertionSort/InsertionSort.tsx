@@ -4,6 +4,8 @@ import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageT
 //Page Elements
 import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
 import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import TC from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TC';
+import TCContainer from '../../../../Components/UI/PageComponents/AlgoPageTemplate/TCContainer';
 import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
 import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
 import Button from '../../../../Components/UI/PageComponents/Button/Button';
@@ -138,15 +140,11 @@ export default function Array() {
           {algoText}
         </CodeSnippet>
 
-        <H>Time Complexity: Slow</H>
-        <P>O(n<sup>2</sup>)</P> 
-        <P>The time complexity of insertion sort is O(n<sup>2</sup>), where n is the number of elements in the input list.
-           This means that the time it takes to sort the list increases quadratically with the number of elements in the list.
-           In the worst-case scenario, where the input list is in reverse order, the algorithm will make n<sup>2/2</sup> comparisons and n<sup>2/2</sup> swaps.
-           However, if the input list is already partially sorted, insertion sort can have a best-case time complexity of O(n), where only n-1 comparisons and 0 swaps are needed to sort the list.
-           In general, insertion sort performs well on small lists or nearly sorted lists, but becomes less efficient on larger, unsorted lists.
-           As a result, it is typically not used for large-scale sorting applications, where more efficient algorithms such as quicksort or mergesort are preferred.
-        </P>
+        <TCContainer>
+            <TC type={"Best"}>O(n)</TC>
+            <TC type={"Average"}>O(n<sup>2</sup>)</TC>
+            <TC type={"Worse"}>O(n<sup>2</sup>)</TC>
+        </TCContainer>
 
     </AlgoPageTemplate>
   );
