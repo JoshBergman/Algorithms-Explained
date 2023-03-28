@@ -1,16 +1,17 @@
-import React, { useState, useRef } from 'react';
-import AlgoPageTemplate from '../../../../Components/UI/PageComponents/AlgoPageTemplate/AlgoPageTemplate';
+import React, { useState, useRef } from "react";
+import AlgoPageTemplate from "../../../../Components/UI/PageComponents/AlgoPageTemplate/AlgoPageTemplate";
 
 //Page Elements
-import P from '../../../../Components/UI/PageComponents/AlgoPageTemplate/P';
-import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
-import CodeSnippet from '../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet';
-import ArrayVisualizer from '../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer';
-import Button from '../../../../Components/UI/PageComponents/Button/Button';
-import Speedometer from '../../../../Components/UI/PageComponents/Speedometer/Speedometer';
+import P from "../../../../Components/UI/PageComponents/AlgoPageTemplate/P";
+import H from "../../../../Components/UI/PageComponents/AlgoPageTemplate/H";
+import CodeSnippet from "../../../../Components/UI/PageResources/CodeSnippet/CodeSnippet";
+import ArrayVisualizer from "../../../../Components/Visualizers/ArrayVisualizer/ArrayVisualizer";
+import Button from "../../../../Components/UI/PageComponents/Button/Button";
+import Speedometer from "../../../../Components/UI/PageComponents/Speedometer/Speedometer";
 
 //Helpers
-import { getRandomArray } from '../../../../Components/Helpers/Random-Array';
+import { getRandomArray } from "../../../../Components/Helpers/Random-Array";
+import TimeTable from "../../../../Components/UI/PageComponents/AlgoPageTemplate/TimeTable";
 
 export default function QuickSort() {
   const [displayArray, setDisplayArray] = useState(getRandomArray());
@@ -23,15 +24,17 @@ export default function QuickSort() {
 
   //used to create illusion of actively sorting. Standard method is problematic with recursive functions
   let timeI = 1;
-  const nextTime = ():number => {
+  const nextTime = (): number => {
     let buffer: number = 10;
-    if(speedRef.current){
-        buffer = speedRef.current;
+    if (speedRef.current) {
+      buffer = speedRef.current;
     }
     timeI++;
     const returnVal = timeI * buffer;
-    if(timeI >= 100){
-        setTimeout(()=>{setSorting(false)}, returnVal);
+    if (timeI >= 100) {
+      setTimeout(() => {
+        setSorting(false);
+      }, returnVal);
     }
     return timeI * buffer;
   };
@@ -39,69 +42,71 @@ export default function QuickSort() {
   const quickSort = (sortArray: number[]): number[] => {
     const arr = sortArray.concat([]);
     if (arr.length <= 1) {
-        return arr;
+      return arr;
     } else {
-        let left = [];
-        let right = [];
-        let storage: number[] = [];
+      let left = [];
+      let right = [];
+      let storage: number[] = [];
 
-        let pivot = arr.pop()! // .pop()"!" sets return type of .pop() to not include undefined
-        let len = arr.length;
+      let pivot = arr.pop()!; // .pop()"!" sets return type of .pop() to not include undefined
+      let len = arr.length;
 
-        for (let i = 0; i < len; i++) {
-            if (arr[i] <= pivot) {
-                left.push(arr[i]);
-            } else {
-                right.push(arr[i]);
-            }
+      for (let i = 0; i < len; i++) {
+        if (arr[i] <= pivot) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
         }
+      }
 
-        let sortedLeft = quickSort(left);
-        let sortedRight = quickSort(right)
-        let merged = storage.concat(sortedLeft, pivot, sortedRight);
+      let sortedLeft = quickSort(left);
+      let sortedRight = quickSort(right);
+      let merged = storage.concat(sortedLeft, pivot, sortedRight);
 
-        //visualizer update
-        setTimeout(() => {
-          setDisplayArray(merged.concat([]));
-        }, nextTime());
+      //visualizer update
+      setTimeout(() => {
+        setDisplayArray(merged.concat([]));
+      }, nextTime());
 
-        if(merged.length >= 100){
-          setTimeout(() => setSorting(false), nextTime());
-        }
-        // /visualizer update
+      if (merged.length >= 100) {
+        setTimeout(() => setSorting(false), nextTime());
+      }
+      // /visualizer update
 
-        return merged;
+      return merged;
     }
-}
-
+  };
 
   const buttonHandlerReset = () => {
-    if(!sorting){
+    if (!sorting) {
       setDisplayArray(getRandomArray());
       timeI = 0;
     }
   };
 
   const buttonHandlerSort = () => {
-    if(!sorting){
+    if (!sorting) {
       setSorting(true);
-      setTimeout(() => {quickSort(displayArray);}, 250);
+      setTimeout(() => {
+        quickSort(displayArray);
+      }, 250);
     }
   };
 
-
   //page info -------------------------------------------------------------------
   const pageTitle = "QuickSort()";
-  const algo = <ArrayVisualizer newArray={displayArray} />
+  const algo = <ArrayVisualizer newArray={displayArray} />;
   const buttons = (
-    <React.Fragment>        
+    <React.Fragment>
       <Button onClick={buttonHandlerSort}>Sort</Button>
-      <Button onClick={buttonHandlerReset}>{sorting ? "Sorting..." : "Reset"}</Button>
+      <Button onClick={buttonHandlerReset}>
+        {sorting ? "Sorting..." : "Reset"}
+      </Button>
       <Speedometer currSpeed={currSpeed} setSpeed={setCurrSpeed} />
     </React.Fragment>
-    );
+  );
 
-    const bubbleText = `
+  const bubbleText = `
   const quickSort = (sortArray: number[]): number[] => {^
     const arr = sortArray.concat([]);^
     if (arr.length <= 1) {^
@@ -133,38 +138,61 @@ export default function QuickSort() {
 
   return (
     <AlgoPageTemplate algo={algo} title={pageTitle} buttonContainer={buttons}>
+      <H centered={true}>QuickSort Overview</H>
+      <P>
+        Quicksort is a popular sorting algorithm that uses a divide-and-conquer
+        approach to sort an array of elements. The basic idea behind the
+        algorithm is to partition the array into smaller sub-arrays, and then
+        recursively sort each sub-array.
+      </P>
 
-        <H centered={true}>QuickSort Overview</H>
-        <P>
-          Quicksort is a popular sorting algorithm that uses a divide-and-conquer approach to sort an array of elements. The basic idea behind the algorithm is to partition the array into smaller sub-arrays, and then recursively sort each sub-array.
-        </P>
+      <H>QuickSort() Implementation (TS)</H>
+      <CodeSnippet>{bubbleText}</CodeSnippet>
 
-        <H>QuickSort() Implementation (TS)</H>
-        <CodeSnippet>
-          {bubbleText}
-        </CodeSnippet>
+      <H>How QuickSort Works</H>
+      <P>
+        The algorithm selects a "pivot" element from the array, and then
+        partitions the remaining elements into two sub-arrays, one containing
+        elements that are smaller than the pivot and the other containing
+        elements that are larger than the pivot. This partitioning process is
+        performed using a partition function, which rearranges the elements of
+        the array in such a way that all elements smaller than the pivot appear
+        before it, and all elements larger than the pivot appear after it.
+      </P>
+      <P>
+        Once the array has been partitioned, the algorithm recursively sorts
+        each sub-array by selecting a new pivot and repeating the partitioning
+        process until each sub-array contains only one element. At this point,
+        the sub-arrays are already sorted, and the algorithm can merge them back
+        together to produce a sorted array.
+      </P>
+      <P>
+        One important aspect of quicksort is the choice of pivot. A good pivot
+        should be chosen such that it partitions the array into two roughly
+        equal sub-arrays. This ensures that the algorithm runs efficiently and
+        avoids worst-case performance scenarios where the partitioning produces
+        highly imbalanced sub-arrays.
+      </P>
 
-        <H>How QuickSort Works</H>
-        <P>
-          The algorithm selects a "pivot" element from the array, and then partitions the remaining elements into two sub-arrays, one containing elements that are smaller than the pivot and the other containing elements that are larger than the pivot. This partitioning process is performed using a partition function, which rearranges the elements of the array in such a way that all elements smaller than the pivot appear before it, and all elements larger than the pivot appear after it.
-        </P>
-        <P>
-          Once the array has been partitioned, the algorithm recursively sorts each sub-array by selecting a new pivot and repeating the partitioning process until each sub-array contains only one element. At this point, the sub-arrays are already sorted, and the algorithm can merge them back together to produce a sorted array.
-        </P>
-        <P>
-          One important aspect of quicksort is the choice of pivot. A good pivot should be chosen such that it partitions the array into two roughly equal sub-arrays. This ensures that the algorithm runs efficiently and avoids worst-case performance scenarios where the partitioning produces highly imbalanced sub-arrays.
-        </P>
-
-        <H>Time Complexity: Fast</H>
-        <P>O(n log n)</P> 
-        <P>
-          The time complexity of quicksort is generally O(n log n) on average, making it one of the fastest sorting algorithms in practice. 
-          This is because the algorithm divides the array into smaller sub-arrays and sorts them recursively, effectively reducing the number of comparisons needed to sort the entire array. 
-          However, the worst-case time complexity of quicksort is O(n<sup>2</sup>), which occurs when the partitioning process produces highly imbalanced sub-arrays. In this case, the recursive sorting process becomes less efficient, and the algorithm requires more comparisons to sort the array. 
-          To avoid worst-case performance, various techniques have been developed, such as selecting a good pivot, choosing a randomized pivot, or using hybrid algorithms that switch to a different sorting algorithm for small sub-arrays. 
-          Overall, the time complexity of quicksort is a function of the size of the array and the efficiency of the partitioning process, and can be optimized using various strategies to improve its performance.
-        </P>
-
+      <H>Time Complexity</H>
+      <TimeTable best={"O(n log(n))"} average={"O(n log(n))"} worst={"O(n²)"} />
+      <P>
+        The time complexity of quicksort is generally O(n log n) on average,
+        making it one of the fastest sorting algorithms in practice. This is
+        because the algorithm divides the array into smaller sub-arrays and
+        sorts them recursively, effectively reducing the number of comparisons
+        needed to sort the entire array. However, the worst-case time complexity
+        of quicksort is O(n<sup>2</sup>), which occurs when the partitioning
+        process produces highly imbalanced sub-arrays. In this case, the
+        recursive sorting process becomes less efficient, and the algorithm
+        requires more comparisons to sort the array. To avoid worst-case
+        performance, various techniques have been developed, such as selecting a
+        good pivot, choosing a randomized pivot, or using hybrid algorithms that
+        switch to a different sorting algorithm for small sub-arrays. Overall,
+        the time complexity of quicksort is a function of the size of the array
+        and the efficiency of the partitioning process, and can be optimized
+        using various strategies to improve its performance.
+      </P>
     </AlgoPageTemplate>
   );
 }

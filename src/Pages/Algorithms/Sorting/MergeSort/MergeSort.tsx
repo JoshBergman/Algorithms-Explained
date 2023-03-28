@@ -168,11 +168,11 @@ export default function Array() {
         the elements have been sorted and merged into the new, sorted list.
       </P>
 
-      <H>Time Complexity: Fast</H>
+      <H>Time Complexity</H>
       <TimeTable
-        best={"O(n log n)"}
-        average={"O(n log n)"}
-        worst={"O(n log n)"}
+        best={"O(n log(n))"}
+        average={"O(n log(n))"}
+        worst={"O(n log(n))"}
       />
       <P>
         The time complexity of mergesort is O(n log n), where n is the number of
