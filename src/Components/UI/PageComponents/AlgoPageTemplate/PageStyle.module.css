@@ -1,40 +1,41 @@
 .p {
-    text-align: left;
-    font-size: 18px;
-    
-    margin: 4px 0 20px 0;
-    font-weight: 400;
+  text-align: left;
+  font-size: 18px;
+
+  margin: 4px 0 20px 0;
+  font-weight: 400;
 }
 
-.h, .hc {
-    text-align: left;
-    font-size: 20px;
+.h,
+.hc {
+  text-align: left;
+  font-size: 20px;
 
-    margin: 40px 0 10px 0;
-    margin-top: 80px;
+  margin: 40px 0 10px 0;
+  margin-top: 80px;
 }
 
 .hc {
-    text-align: center;
+  text-align: center;
 }
 
 .RefLink {
-    color: inherit;
-    font-size: inherit;
-    font-family: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
 
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .RefLink:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-/*
+/* 
     Time Complexity Area
 */
-
+/* 
 .TCContainer{
     display:flex;
     justify-content: center
@@ -57,4 +58,4 @@
     padding: 1em;
     width: fit-content;
     margin: auto;
-}
+} */

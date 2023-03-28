@@ -1,22 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import styles from './PageStyle.module.css';
-import H from '../../../../Components/UI/PageComponents/AlgoPageTemplate/H';
+import styles from "./PageStyle.module.css";
+import H from "../../../../Components/UI/PageComponents/AlgoPageTemplate/H";
 
 interface IProps {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export default function TCContainer({ children }: IProps) {
-
-    return (
+  return (
     <div>
-        <H centered={true}>Time Complexity</H>
-        <div className={styles.TCContainer}>
-            {children}
-        </div>
+      <H centered={true}>Time Complexity</H>
+      <table className={styles.TCContainer}>{children}</table>
     </div>
-
   );
 }
-

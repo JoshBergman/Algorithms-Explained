@@ -1,23 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 
-import styles from './PageStyle.module.css';
+import styles from "./PageStyle.module.css";
 
 interface IProps {
-    children: React.ReactNode;
-    type: string;
+  children: React.ReactNode;
+  type: string;
 }
 
 export default function TC({ children, type }: IProps) {
-
-    return (
-    <div className={styles.TCCard}>
-            <div className={styles.TCHeader}>
-                {type}
-            </div>
-            <div className={styles.TCBody}>
-                {children}
-            </div>
-    </div>
+  return (
+    <React.Fragment>
+      <tr className={styles.TCHeader}>
+        <td>{type}</td>
+      </tr>
+      <tr className={styles.TCBody}>
+        <td>{children}</td>
+      </tr>
+    </React.Fragment>
   );
 }
-
