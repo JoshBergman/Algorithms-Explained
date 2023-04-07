@@ -1,4 +1,4 @@
-import React, { Suspense, useContext } from "react";
+import React, { Suspense, useContext, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import "./App.css";
@@ -13,6 +13,13 @@ import AESpinner from "./Components/UI/Spinners/AESpinner";
 // TODO Replace loading placeholder with actual loading spinner
 
 function App() {
+  //just a lil data mining
+  useEffect(() => {
+    try {
+      fetch("https://too-simple-analytics.herokuapp.com/std/view/AlgoExample");
+    } catch (err) {}
+  }, []);
+
   const styleCTX = useContext(StyleContext);
   const linksCTX = useContext(LinksContext);
   const allLinks = linksCTX.allLinks.links;
